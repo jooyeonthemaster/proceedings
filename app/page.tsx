@@ -1,126 +1,103 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import TitleSlide from '@/components/TitleSlide';
-import KPISlide from '@/components/KPISlide';
-import AIClassroomSlide from '@/components/AIClassroomSlide';
-import AICaseSlide from '@/components/AICaseSlide';
-import PhotoboothSlide from '@/components/PhotoboothSlide';
-import DesignDiscussionSlide from '@/components/DesignDiscussionSlide';
+import Link from 'next/link';
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 6;
-
-  const slides = [
-    <TitleSlide key={0} />,
-    <KPISlide key={1} />,
-    <AIClassroomSlide key={2} />,
-    <AICaseSlide key={3} />,
-    <PhotoboothSlide key={4} />,
-    <DesignDiscussionSlide key={5} />
+  const months = [
+    {
+      name: '11월',
+      path: '/november',
+      year: '2025',
+      color: 'from-lime-500 to-green-600'
+    }
   ];
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight' || e.key === ' ') {
-        e.preventDefault();
-        nextSlide();
-      } else if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        prevSlide();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentSlide]);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-dark">
-      {/* Slides */}
-      <div
-        className="flex w-full h-full transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-      >
-        {slides.map((slide, index) => (
-          <div key={index} className="min-w-full h-full">
-            {slide}
-          </div>
-        ))}
-      </div>
-
-      {/* Navigation Controls */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-dark-light bg-opacity-80 backdrop-blur-sm px-6 py-3 rounded-full flex items-center space-x-4 border border-gray-600">
-          <button
-            onClick={prevSlide}
-            disabled={currentSlide === 0}
-            className={`text-2xl ${
-              currentSlide === 0
-                ? 'text-gray-600 cursor-not-allowed'
-                : 'text-primary hover:text-white transition-colors'
-            }`}
-            aria-label="Previous slide"
-          >
-            ←
-          </button>
-
-          <div className="flex space-x-2">
-            {Array.from({ length: totalSlides }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentSlide === index
-                    ? 'bg-primary w-8'
-                    : 'bg-gray-600 hover:bg-gray-400'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={nextSlide}
-            disabled={currentSlide === totalSlides - 1}
-            className={`text-2xl ${
-              currentSlide === totalSlides - 1
-                ? 'text-gray-600 cursor-not-allowed'
-                : 'text-primary hover:text-white transition-colors'
-            }`}
-            aria-label="Next slide"
-          >
-            →
-          </button>
+    <div className="min-h-screen bg-gradient-to-br from-dark via-dark-light to-dark flex items-center justify-center p-8">
+      <div className="max-w-6xl w-full">
+        <div className="text-center mb-16 fade-in">
+          <h1 className="text-6xl font-bold text-white mb-4">
+            개발팀 회의록 아카이브
+          </h1>
+          <div className="h-1 w-48 bg-primary mx-auto mb-6"></div>
+          <p className="text-2xl text-gray-300">
+            주식회사 네안데르
+          </p>
+          <p className="text-lg text-gray-400 mt-2">
+            월별 회의록을 선택하세요
+          </p>
         </div>
-      </div>
 
-      {/* Slide Counter */}
-      <div className="fixed top-8 right-8 z-50">
-        <div className="bg-dark-light bg-opacity-80 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-600">
-          <span className="text-primary font-bold">{currentSlide + 1}</span>
-          <span className="text-gray-400"> / {totalSlides}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {months.map((month, index) => (
+            <Link
+              key={index}
+              href={month.path}
+              className="group relative"
+            >
+              <div className="relative overflow-hidden rounded-2xl bg-dark-light border-2 border-gray-600 hover:border-primary transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
+                {/* Folder Icon */}
+                <div className="p-12 flex flex-col items-center justify-center space-y-6">
+                  {/* SVG Folder Icon */}
+                  <div className={`relative w-32 h-32 bg-gradient-to-br ${month.color} rounded-lg transform transition-transform group-hover:rotate-3`}>
+                    <div className="absolute -top-3 left-4 w-16 h-6 bg-gradient-to-r from-lime-400 to-green-500 rounded-t-lg"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <svg
+                        className="w-16 h-16 text-white opacity-60"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Month Name */}
+                  <div className="text-center">
+                    <h2 className="text-3xl font-bold text-white group-hover:text-primary transition-colors">
+                      {month.name}
+                    </h2>
+                    <p className="text-gray-400 text-sm mt-2">{month.year}</p>
+                  </div>
+
+                  {/* Arrow Indicator */}
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="flex items-center text-primary">
+                      <span className="text-sm mr-2">열기</span>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Shine Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              </div>
+            </Link>
+          ))}
         </div>
-      </div>
 
-      {/* Instructions */}
-      <div className="fixed bottom-8 left-8 z-50">
-        <div className="bg-dark-light bg-opacity-80 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-600">
-          <p className="text-xs text-gray-400">
-            키보드 방향키 또는 스페이스바로 이동
+        {/* Footer Info */}
+        <div className="mt-16 text-center">
+          <p className="text-gray-500 text-sm">
+            키보드 화살표 또는 클릭으로 이동 가능합니다
           </p>
         </div>
       </div>
