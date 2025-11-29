@@ -20,6 +20,15 @@ export default function NovemberPage() {
       description: 'KPI 업데이트, AI 교실 시즌2, 김주연의 AI 여정',
       path: '/november/week3',
       color: 'from-purple-500 to-pink-600',
+      status: 'completed'
+    },
+    {
+      week: 5,
+      date: '2025년 11월 29일',
+      title: '11월 5주차 회의록',
+      description: '월간 회고 및 12월 목표 설정',
+      path: '/november/week5',
+      color: 'from-green-500 to-emerald-600',
       status: 'current'
     }
   ];

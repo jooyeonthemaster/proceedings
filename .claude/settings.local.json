@@ -3,7 +3,12 @@
     "allow": [
       "Bash(find:*)",
       "Bash(cat:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\n[ADD] Week 3 meeting slides with cash cow business strategy\n\n- Added 4 new slides: CashCowConceptSlide, CurrentBusinessAnalysisSlide, PhotoboothBusinessSlide, ThreeDPrintingVisionSlide\n- Implemented cash cow concept analysis (minimum effort + sustainability)\n- Added current business analysis (birthday events, simple events, outsourcing)\n- Added AI photobooth business advantages\n- Added 3D printing vision and lifestyle brand strategy\n- Updated Week 3 page to include new slides (11 → 15 slides total)\n\nFiles: components/week3/*.tsx, app/november/week3/page.tsx\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push)",
+      "Bash(vercel --prod:*)",
+      "Bash(tree:*)",
+      "Bash(ls -la \"c:\\Users\\jooye\\Desktop\\2025meeting\\app\"\" && find \"c:UsersjooyeDesktop2025meetingapp\" -name \"*.css \")"
     ],
     "deny": [],
     "ask": []
