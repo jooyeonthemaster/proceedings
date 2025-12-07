@@ -29,7 +29,7 @@ export default function TitleSlide() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h1 className="text-7xl font-bold text-white mb-4 tracking-tight">
-            12월 2주차 <span className="text-red-400">주간 회의</span>
+            12월 1주차 <span className="text-red-400">주간 회의</span>
           </h1>
           <div className="h-2 w-40 bg-gradient-to-r from-red-400 to-orange-500 mx-auto rounded-full"></div>
         </motion.div>

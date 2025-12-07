@@ -1,14 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(find:*)",
-      "Bash(cat:*)",
+      "Bash(mkdir:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"$(cat <<''EOF''\n[ADD] Week 3 meeting slides with cash cow business strategy\n\n- Added 4 new slides: CashCowConceptSlide, CurrentBusinessAnalysisSlide, PhotoboothBusinessSlide, ThreeDPrintingVisionSlide\n- Implemented cash cow concept analysis (minimum effort + sustainability)\n- Added current business analysis (birthday events, simple events, outsourcing)\n- Added AI photobooth business advantages\n- Added 3D printing vision and lifestyle brand strategy\n- Updated Week 3 page to include new slides (11 → 15 slides total)\n\nFiles: components/week3/*.tsx, app/november/week3/page.tsx\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
-      "Bash(git push)",
-      "Bash(vercel --prod:*)",
-      "Bash(tree:*)",
-      "Bash(ls -la \"c:\\Users\\jooye\\Desktop\\2025meeting\\app\"\" && find \"c:UsersjooyeDesktop2025meetingapp\" -name \"*.css \")"
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: Add December Week 2 meeting slides\n\n- KPI 정산 현황 (12월 2주차/3주차 정산 예정)\n- 개발 현황 (90%+ 완료)\n- 12월 핵심 계획 (관광벤처 발표, 2026 지원사업)\n- 신규 프로젝트 (SPOT 자사몰, 악센트 아이디 AI)\n- 김박사의 AI NEWS (AI 투자 실험 결과)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(vercel:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

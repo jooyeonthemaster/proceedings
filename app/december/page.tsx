@@ -5,11 +5,11 @@ import Link from 'next/link';
 export default function DecemberPage() {
   const weeks = [
     {
-      week: 2,
+      week: 1,
       date: '2025년 12월 7일',
-      title: '12월 2주차 회의록',
+      title: '12월 1주차 회의록',
       description: 'KPI 정산 현황, 12월 계획, AI 투자 NEWS',
-      path: '/december/week2',
+      path: '/december/week1',
       color: 'from-red-500 to-orange-600',
       status: 'current'
     }

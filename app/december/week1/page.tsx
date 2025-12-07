@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import TitleSlide from '@/components/december-week2/TitleSlide';
-import KPIUpdateSlide from '@/components/december-week2/KPIUpdateSlide';
-import DevStatusSlide from '@/components/december-week2/DevStatusSlide';
-import DecemberPlanSlide from '@/components/december-week2/DecemberPlanSlide';
-import NewProjectsSlide from '@/components/december-week2/NewProjectsSlide';
-import AIInvestmentSlide from '@/components/december-week2/AIInvestmentSlide';
+import TitleSlide from '@/components/december-week1/TitleSlide';
+import KPIUpdateSlide from '@/components/december-week1/KPIUpdateSlide';
+import DevStatusSlide from '@/components/december-week1/DevStatusSlide';
+import DecemberPlanSlide from '@/components/december-week1/DecemberPlanSlide';
+import NewProjectsSlide from '@/components/december-week1/NewProjectsSlide';
+import AIInvestmentSlide from '@/components/december-week1/AIInvestmentSlide';
 
-export default function DecemberWeek2Page() {
+export default function DecemberWeek1Page() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = 6;
 
