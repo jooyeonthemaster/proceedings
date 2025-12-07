@@ -8,10 +8,11 @@ import DevStatusSlide from '@/components/december-week1/DevStatusSlide';
 import DecemberPlanSlide from '@/components/december-week1/DecemberPlanSlide';
 import NewProjectsSlide from '@/components/december-week1/NewProjectsSlide';
 import AIInvestmentSlide from '@/components/december-week1/AIInvestmentSlide';
+import ContentBrandingSlide from '@/components/december-week1/ContentBrandingSlide';
 
 export default function DecemberWeek1Page() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 6;
+  const totalSlides = 7;
 
   const slides = [
     <TitleSlide key={0} />,
@@ -19,7 +20,8 @@ export default function DecemberWeek1Page() {
     <DevStatusSlide key={2} />,
     <DecemberPlanSlide key={3} />,
     <NewProjectsSlide key={4} />,
-    <AIInvestmentSlide key={5} />
+    <AIInvestmentSlide key={5} />,
+    <ContentBrandingSlide key={6} />
   ];
 
   useEffect(() => {
