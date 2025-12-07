@@ -9,6 +9,12 @@ export default function Home() {
       path: '/november',
       year: '2025',
       color: 'from-lime-500 to-green-600'
+    },
+    {
+      name: '12월',
+      path: '/december',
+      year: '2025',
+      color: 'from-red-500 to-orange-600'
     }
   ];
 
