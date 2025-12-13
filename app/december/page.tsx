@@ -11,6 +11,15 @@ export default function DecemberPage() {
       description: 'KPI 정산 현황, 12월 계획, AI 투자 NEWS',
       path: '/december/week1',
       color: 'from-red-500 to-orange-600',
+      status: 'completed'
+    },
+    {
+      week: 2,
+      date: '2025년 12월 14일',
+      title: '12월 2주차 회의록',
+      description: '정산 현황, 화한앱 추가개발, 뿌덕 V2 업데이트',
+      path: '/december/week2',
+      color: 'from-emerald-500 to-teal-600',
       status: 'current'
     }
   ];
