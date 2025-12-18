@@ -20,6 +20,15 @@ export default function DecemberPage() {
       description: '정산 현황, 화한앱 추가개발, 뿌덕 V2 업데이트',
       path: '/december/week2',
       color: 'from-emerald-500 to-teal-600',
+      status: 'completed'
+    },
+    {
+      week: 3,
+      date: '2025년 12월 21일',
+      title: '12월 3주차 회의록',
+      description: '🔥 2025 돌아보기 & 2026 신년 비전',
+      path: '/december/week3',
+      color: 'from-amber-500 to-orange-600',
       status: 'current'
     }
   ];
