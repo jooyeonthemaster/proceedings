@@ -13,12 +13,14 @@ import NeanderLabSlide from '@/components/december-week3/NeanderLabSlide';
 import VSAIContentSlide from '@/components/december-week3/VSAIContentSlide';
 import KpopAIContentSlide from '@/components/december-week3/KpopAIContentSlide';
 import YouTuberAISlide from '@/components/december-week3/YouTuberAISlide';
+import BusinessEntitySlide from '@/components/december-week3/BusinessEntitySlide';
+import RoadmapSlide from '@/components/december-week3/RoadmapSlide';
 import PersonalGoalsSlide from '@/components/december-week3/PersonalGoalsSlide';
 import ClosingSlide from '@/components/december-week3/ClosingSlide';
 
 export default function DecemberWeek3Page() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 13;
+  const totalSlides = 15;
 
   const slides = [
     <TitleSlide key={0} />,
@@ -32,8 +34,10 @@ export default function DecemberWeek3Page() {
     <VSAIContentSlide key={8} />,
     <KpopAIContentSlide key={9} />,
     <YouTuberAISlide key={10} />,
-    <PersonalGoalsSlide key={11} />,
-    <ClosingSlide key={12} />
+    <BusinessEntitySlide key={11} />,
+    <RoadmapSlide key={12} />,
+    <PersonalGoalsSlide key={13} />,
+    <ClosingSlide key={14} />
   ];
 
   useEffect(() => {
