@@ -106,37 +106,28 @@ export default function RoadmapSlide() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative mb-6"
+          className="mb-6"
         >
-          {/* Timeline Line - positioned at center of Year Badge (48px from top) */}
-          <div
-            className="absolute left-[9%] right-[9%] h-1.5 rounded-full"
-            style={{
-              top: '48px',
-              background: 'linear-gradient(to right, #f59e0b, #22c55e, #3b82f6, #a855f7, #ec4899)'
-            }}
-          ></div>
-
-          {/* Year Cards */}
-          <div className="flex justify-between relative z-10">
+          {/* Combined Grid - Year Badge + Arrow + Content Card */}
+          <div className="grid grid-cols-5 gap-3">
             {roadmap.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                className="flex flex-col items-center w-[18%]"
+                className="relative flex flex-col items-center"
               >
                 {/* Year Badge */}
-                <div className={`w-24 h-24 rounded-2xl flex flex-col items-center justify-center mb-2 border-2 ${
+                <div className={`w-16 h-16 rounded-xl flex flex-col items-center justify-center border-2 mb-3 ${
                   item.color === 'amber' ? 'bg-amber-500/20 border-amber-500' :
                   item.color === 'green' ? 'bg-green-500/20 border-green-500' :
                   item.color === 'blue' ? 'bg-blue-500/20 border-blue-500' :
                   item.color === 'purple' ? 'bg-purple-500/20 border-purple-500' :
                   'bg-pink-500/20 border-pink-500'
                 }`}>
-                  <span className="text-3xl">{item.icon}</span>
-                  <span className={`text-lg font-bold ${
+                  <span className="text-lg">{item.icon}</span>
+                  <span className={`text-sm font-bold ${
                     item.color === 'amber' ? 'text-amber-400' :
                     item.color === 'green' ? 'text-green-400' :
                     item.color === 'blue' ? 'text-blue-400' :
@@ -147,8 +138,23 @@ export default function RoadmapSlide() {
                   </span>
                 </div>
 
+                {/* Arrow to next - positioned between columns */}
+                {index < roadmap.length - 1 && (
+                  <div className="absolute top-6 -right-4 z-10">
+                    <svg className={`w-5 h-5 ${
+                      item.color === 'amber' ? 'text-amber-500' :
+                      item.color === 'green' ? 'text-green-500' :
+                      item.color === 'blue' ? 'text-blue-500' :
+                      item.color === 'purple' ? 'text-purple-500' :
+                      'text-pink-500'
+                    }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </div>
+                )}
+
                 {/* Content Card */}
-                <div className={`w-full rounded-xl p-3 border ${
+                <div className={`w-full rounded-xl p-3 border flex-1 ${
                   item.color === 'amber' ? 'bg-amber-500/10 border-amber-500/30' :
                   item.color === 'green' ? 'bg-green-500/10 border-green-500/30' :
                   item.color === 'blue' ? 'bg-blue-500/10 border-blue-500/30' :
@@ -167,8 +173,8 @@ export default function RoadmapSlide() {
                   <ul className="space-y-1">
                     {item.goals.map((goal, i) => (
                       <li key={i} className="text-gray-300 text-xs flex items-start gap-1">
-                        <span className="text-primary mt-0.5">•</span>
-                        <span>{goal}</span>
+                        <span className="text-primary shrink-0">•</span>
+                        <span className="leading-tight">{goal}</span>
                       </li>
                     ))}
                   </ul>
