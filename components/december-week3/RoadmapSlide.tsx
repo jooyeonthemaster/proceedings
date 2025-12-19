@@ -108,11 +108,17 @@ export default function RoadmapSlide() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="relative mb-6"
         >
-          {/* Timeline Line */}
-          <div className="absolute top-12 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-green-500 via-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
+          {/* Timeline Line - positioned at center of Year Badge (48px from top) */}
+          <div
+            className="absolute left-[9%] right-[9%] h-1.5 rounded-full"
+            style={{
+              top: '48px',
+              background: 'linear-gradient(to right, #f59e0b, #22c55e, #3b82f6, #a855f7, #ec4899)'
+            }}
+          ></div>
 
           {/* Year Cards */}
-          <div className="flex justify-between">
+          <div className="flex justify-between relative z-10">
             {roadmap.map((item, index) => (
               <motion.div
                 key={index}
