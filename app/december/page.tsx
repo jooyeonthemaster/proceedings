@@ -29,6 +29,15 @@ export default function DecemberPage() {
       description: '🔥 2025 돌아보기 & 2026 신년 비전',
       path: '/december/week3',
       color: 'from-amber-500 to-orange-600',
+      status: 'completed'
+    },
+    {
+      week: 4,
+      date: '2025년 12월 28일',
+      title: '12월 4주차 회의록',
+      description: '📺 VS AI 유튜브, 네안데르랩 비전, 악센트 ID/WOW',
+      path: '/december/week4',
+      color: 'from-purple-500 to-pink-600',
       status: 'current'
     }
   ];
