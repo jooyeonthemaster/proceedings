@@ -15,6 +15,12 @@ export default function Home() {
       path: '/december',
       year: '2025',
       color: 'from-red-500 to-orange-600'
+    },
+    {
+      name: '1월',
+      path: '/january',
+      year: '2026',
+      color: 'from-cyan-500 to-blue-600'
     }
   ];
 

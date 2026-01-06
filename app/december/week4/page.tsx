@@ -88,7 +88,7 @@ export default function DecemberWeek4Page() {
     // 뿌덕 (33-34)
     <PpudeokNeedSlide key={32} />,
     <PpudeokPlanSlide key={33} />,
-    // 정리 및 클로징 (35-37)
+    // 정리 (35-37)
     <SummarySlide key={34} />,
     <ActionItemsSlide key={35} />,
     <ClosingSlide key={36} />,
@@ -185,20 +185,29 @@ export default function DecemberWeek4Page() {
         ))}
       </div>
 
-      {/* Navigation Dots - Grouped by Section */}
+      {/* Navigation Dots */}
       <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 flex gap-1 items-center">
         {Array.from({ length: totalSlides }).map((_, index) => {
-          const isCurrentSection =
-            (index <= 1 && currentSlide <= 1) ||
-            (index >= 2 && index <= 3 && currentSlide >= 2 && currentSlide <= 3) ||
-            (index >= 4 && index <= 8 && currentSlide >= 4 && currentSlide <= 8) ||
-            (index >= 9 && index <= 11 && currentSlide >= 9 && currentSlide <= 11) ||
-            (index >= 12 && index <= 18 && currentSlide >= 12 && currentSlide <= 18) ||
-            (index >= 19 && index <= 26 && currentSlide >= 19 && currentSlide <= 26) ||
-            (index >= 27 && index <= 30 && currentSlide >= 27 && currentSlide <= 30) ||
-            (index === 31 && currentSlide === 31) ||
-            (index >= 32 && index <= 33 && currentSlide >= 32 && currentSlide <= 33) ||
-            (index >= 34 && currentSlide >= 34);
+          const sectionBoundaries = [
+            { start: 0, end: 1 },     // 방향성
+            { start: 2, end: 3 },     // 팀 소개
+            { start: 4, end: 8 },     // 네안데르랩
+            { start: 9, end: 11 },    // VS AI 전략
+            { start: 12, end: 18 },   // VS AI 기획안
+            { start: 19, end: 26 },   // 악센트 ID
+            { start: 27, end: 30 },   // 악센트 WOW
+            { start: 31, end: 31 },   // 스팟
+            { start: 32, end: 33 },   // 뿌덕
+            { start: 34, end: 36 },   // 정리
+          ];
+
+          const isCurrentSection = sectionBoundaries.some(
+            (section) =>
+              index >= section.start &&
+              index <= section.end &&
+              currentSlide >= section.start &&
+              currentSlide <= section.end
+          );
 
           return (
             <button
