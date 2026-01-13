@@ -11,6 +11,15 @@ export default function JanuaryPage() {
       description: '🎨 AI 예술 브랜딩 전략: 사고의 여정',
       path: '/january/week1',
       color: 'from-cyan-500 to-blue-600',
+      status: 'previous'
+    },
+    {
+      week: 3,
+      date: '2026년 1월 13일',
+      title: '1월 3주차 회의록',
+      description: '🎯 전략적 방향 전환: 단기 과열에서 장기 생존으로',
+      path: '/january/week3',
+      color: 'from-amber-500 to-orange-600',
       status: 'current'
     }
   ];
