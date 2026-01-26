@@ -20,6 +20,15 @@ export default function JanuaryPage() {
       description: '🎯 전략적 방향 전환: 단기 과열에서 장기 생존으로',
       path: '/january/week3',
       color: 'from-amber-500 to-orange-600',
+      status: 'previous'
+    },
+    {
+      week: 4,
+      date: '2026년 1월 26일',
+      title: '1월 4주차 회의록',
+      description: '📋 사업계획서 현황 & 개발 진행 보고',
+      path: '/january/week4',
+      color: 'from-blue-500 to-purple-600',
       status: 'current'
     }
   ];
