@@ -25,10 +25,19 @@ export default function JanuaryPage() {
     {
       week: 4,
       date: '2026년 1월 26일',
-      title: '1월 4주차 회의록',
+      title: '1월 4주차 회의록 (임원진)',
       description: '📋 사업계획서 현황 & 개발 진행 보고',
       path: '/january/week4',
       color: 'from-blue-500 to-purple-600',
+      status: 'previous'
+    },
+    {
+      week: 4,
+      date: '2026년 1월 26일',
+      title: '1월 4주차 회의록 (전체)',
+      description: '💻 개발팀 업무 공유 & 김제연 수석 성과 보고',
+      path: '/january/week4-all',
+      color: 'from-cyan-500 to-emerald-600',
       status: 'current'
     }
   ];
