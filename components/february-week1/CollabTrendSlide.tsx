@@ -97,6 +97,31 @@ export default function CollabTrendSlide() {
               밈을 계속 상품화하고, 향으로 건드리는 과정이 모이면 → <span className="text-pink-400 font-semibold">앤디 워홀처럼 예술이 된다</span>
             </p>
           </motion.div>
+
+          {/* 참고자료 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="mt-4 flex justify-center gap-4 text-xs"
+          >
+            <a
+              href="https://www.instagram.com/reel/DRzAxVzj-6o/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-pink-400 transition-colors"
+            >
+              참고: 두쫀쿠 릴스 #1
+            </a>
+            <a
+              href="https://www.instagram.com/reel/DSQBnLKEthW/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-pink-400 transition-colors"
+            >
+              참고: 두쫀쿠 릴스 #2
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </div>
