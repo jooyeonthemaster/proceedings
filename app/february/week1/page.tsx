@@ -22,6 +22,7 @@ import BizPlanStrategySlide from '@/components/february-week1/BizPlanStrategySli
 import ProductStrategyTitleSlide from '@/components/february-week1/ProductStrategyTitleSlide';
 import CasePowerSlide from '@/components/february-week1/CasePowerSlide';
 import CollabTrendSlide from '@/components/february-week1/CollabTrendSlide';
+import MemeProductShowcaseSlide from '@/components/february-week1/MemeProductShowcaseSlide';
 import AIProgramStrategySlide from '@/components/february-week1/AIProgramStrategySlide';
 import ProductLineupSlide from '@/components/february-week1/ProductLineupSlide';
 import ProductStrategySummarySlide from '@/components/february-week1/ProductStrategySummarySlide';
@@ -45,10 +46,11 @@ const slides = [
   BizPlanDetailSlide,
   BizPlanStrategySlide,
 
-  // Part 3: 악센트 아이디 제품 전략 (6)
+  // Part 3: 악센트 아이디 제품 전략 (7)
   ProductStrategyTitleSlide,
   CasePowerSlide,
   CollabTrendSlide,
+  MemeProductShowcaseSlide,
   AIProgramStrategySlide,
   ProductLineupSlide,
   ProductStrategySummarySlide,
@@ -64,8 +66,8 @@ const sections = [
   { name: '내부 개발', startIndex: 3, endIndex: 4, color: 'from-orange-500 to-amber-600' },
   { name: '추가 KPI', startIndex: 5, endIndex: 6, color: 'from-purple-500 to-pink-600' },
   { name: '사업기획', startIndex: 7, endIndex: 9, color: 'from-emerald-500 to-teal-600' },
-  { name: '제품 전략', startIndex: 10, endIndex: 15, color: 'from-orange-500 to-red-600' },
-  { name: '결론', startIndex: 16, endIndex: 17, color: 'from-rose-500 to-pink-600' },
+  { name: '제품 전략', startIndex: 10, endIndex: 16, color: 'from-orange-500 to-red-600' },
+  { name: '결론', startIndex: 17, endIndex: 18, color: 'from-rose-500 to-pink-600' },
 ];
 
 export default function FebruaryWeek1Page() {
