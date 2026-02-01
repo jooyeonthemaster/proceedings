@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function CollabTrendSlide() {
   return (
@@ -11,92 +12,90 @@ export default function CollabTrendSlide() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-white mb-8">콜라보 & 트렌드 전략</h2>
+          <h2 className="text-4xl font-bold text-white mb-2">시그니처 상품 전략</h2>
+          <p className="text-gray-400 mb-8">밈을 상품화하다 - 앤디 워홀처럼</p>
 
-          {/* 콜라보 핵심 전략 */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-2xl p-6 border border-pink-500/30 mb-8"
-          >
-            <div className="flex items-center mb-4">
-              <span className="text-3xl mr-4">🤝</span>
-              <div>
-                <h3 className="text-2xl font-semibold text-white">콜라보 = 핵심 전략</h3>
-                <p className="text-pink-400">케이스티파이 벤치마킹</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* 두쫀쿠 디퓨저 이미지 */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-dark-light/60 rounded-2xl p-6 border border-pink-500/30"
+            >
+              <div className="relative w-full h-64 rounded-xl overflow-hidden mb-4">
+                <Image
+                  src="/hf_20260201_180122_282f1384-d23c-409a-93b9-c01a8a95b1d7.avif"
+                  alt="두쫀쿠 디퓨저"
+                  fill
+                  className="object-cover"
+                />
               </div>
-            </div>
-            <p className="text-gray-400">다양한 브랜드/크리에이터와 협업하여 한정판 케이스 출시</p>
-          </motion.div>
+              <h3 className="text-xl font-semibold text-white mb-2">두쫀쿠 디퓨저</h3>
+              <p className="text-pink-400 text-sm mb-2">2026년 밈 시그니처 상품</p>
+              <p className="text-gray-400 text-sm">과열된 밈을 향으로 표현 - 그 순간을 추억하다</p>
+            </motion.div>
 
-          {/* 트렌드 기반 상품 */}
-          <h3 className="text-xl font-semibold text-white mb-4">트렌드 기반 상품 기획</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {/* 밈 상품화 전략 */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-dark-light/60 rounded-xl p-4 border border-cyan-500/30 text-center"
+              className="space-y-4"
             >
-              <div className="text-3xl mb-2">🍫</div>
-              <p className="text-white font-semibold">두쫀쿠 향수</p>
-              <p className="text-gray-500 text-sm">트렌드 아이템</p>
-            </motion.div>
+              {/* AI 프로그램 연계 */}
+              <div className="bg-dark-light/60 rounded-xl p-5 border border-cyan-500/30">
+                <div className="flex items-center mb-3">
+                  <span className="text-2xl mr-3">🎮</span>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">AI 프로그램 연계</h4>
+                    <p className="text-cyan-400 text-sm">내 두쫀쿠 유형검사</p>
+                  </div>
+                </div>
+                <p className="text-gray-400 text-sm">두쫀쿠에 임하는 나의 자세... 성향에 맞는 향 추천</p>
+                <p className="text-gray-500 text-xs mt-2">푸망 스타일로 프로그램 양산 가능</p>
+              </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="bg-dark-light/60 rounded-xl p-4 border border-blue-500/30 text-center"
-            >
-              <div className="text-3xl mb-2">🍦</div>
-              <p className="text-white font-semibold">스크류바 향수</p>
-              <p className="text-gray-500 text-sm">트렌드 아이템</p>
-            </motion.div>
+              {/* 밈 카테고리 */}
+              <div className="bg-dark-light/60 rounded-xl p-5 border border-purple-500/30">
+                <div className="flex items-center mb-3">
+                  <span className="text-2xl mr-3">🔥</span>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">상품 카테고리: 밈</h4>
+                    <p className="text-purple-400 text-sm">시대의 흐름을 담다</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  <span className="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-xs">두쫀쿠</span>
+                  <span className="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-xs">스크류바</span>
+                  <span className="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-xs">다음 밈?</span>
+                </div>
+              </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="bg-dark-light/60 rounded-xl p-4 border border-purple-500/30 text-center"
-            >
-              <div className="text-3xl mb-2">📺</div>
-              <p className="text-white font-semibold">@uglyperfume</p>
-              <p className="text-gray-500 text-sm">스타일 참고</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="bg-dark-light/60 rounded-xl p-4 border border-orange-500/30 text-center"
-            >
-              <div className="text-3xl mb-2">🔥</div>
-              <p className="text-white font-semibold">시즌 이슈</p>
-              <p className="text-gray-500 text-sm">빠른 대응</p>
+              {/* 브랜드 가치 */}
+              <div className="bg-dark-light/60 rounded-xl p-5 border border-amber-500/30">
+                <div className="flex items-center mb-3">
+                  <span className="text-2xl mr-3">🎨</span>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">브랜드 가치</h4>
+                    <p className="text-amber-400 text-sm">2026년 밈 총결산</p>
+                  </div>
+                </div>
+                <p className="text-gray-400 text-sm">밈의 축적 → 예술적 아카이브 → 브랜드 아이덴티티</p>
+              </div>
             </motion.div>
           </div>
 
-          {/* 디퓨저 라인업 */}
+          {/* 핵심 인사이트 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-            className="bg-dark-light/60 rounded-xl p-6 border border-emerald-500/30"
+            transition={{ delay: 0.5 }}
+            className="mt-6 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-xl p-4 border border-pink-500/20 text-center"
           >
-            <div className="flex items-center mb-4">
-              <span className="text-3xl mr-4">🌱</span>
-              <div>
-                <h3 className="text-xl font-semibold text-white">디퓨저 라인업</h3>
-                <p className="text-emerald-400">화분 모양 시리즈</p>
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <span className="bg-emerald-500/20 text-emerald-400 px-4 py-2 rounded-lg">시즌별 런칭</span>
-              <span className="bg-emerald-500/20 text-emerald-400 px-4 py-2 rounded-lg">한정판 디자인</span>
-              <span className="bg-emerald-500/20 text-emerald-400 px-4 py-2 rounded-lg">콜라보 에디션</span>
-            </div>
+            <p className="text-gray-300">
+              밈을 계속 상품화하고, 향으로 건드리는 과정이 모이면 → <span className="text-pink-400 font-semibold">앤디 워홀처럼 예술이 된다</span>
+            </p>
           </motion.div>
         </motion.div>
       </div>
