@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 export default function CollabTrendSlide() {
   return (
@@ -24,11 +23,10 @@ export default function CollabTrendSlide() {
               className="bg-dark-light/60 rounded-2xl p-6 border border-pink-500/30"
             >
               <div className="relative w-full h-64 rounded-xl overflow-hidden mb-4">
-                <Image
+                <img
                   src="/hf_20260201_180122_282f1384-d23c-409a-93b9-c01a8a95b1d7.avif"
                   alt="두쫀쿠 디퓨저"
-                  fill
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <h3 className="text-xl font-semibold text-white mb-2">두쫀쿠 디퓨저</h3>

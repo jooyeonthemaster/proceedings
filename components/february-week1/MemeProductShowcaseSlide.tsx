@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 export default function MemeProductShowcaseSlide() {
   return (
@@ -26,11 +25,10 @@ export default function MemeProductShowcaseSlide() {
             transition={{ delay: 0.2 }}
             className="relative w-full aspect-[4/3] max-w-3xl mx-auto rounded-2xl overflow-hidden border border-pink-500/30 shadow-2xl shadow-pink-500/10"
           >
-            <Image
+            <img
               src="/hf_20260201_180205_bdac1999-4fb0-4b9f-95ad-f419fa0ab77b.avif"
               alt="두쫀쿠 디퓨저 상세"
-              fill
-              className="object-cover"
+              className="w-full h-full object-cover"
             />
           </motion.div>
 
