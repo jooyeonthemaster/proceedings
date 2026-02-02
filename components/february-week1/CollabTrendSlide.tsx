@@ -24,7 +24,7 @@ export default function CollabTrendSlide() {
             >
               <div className="relative w-full h-64 rounded-xl overflow-hidden mb-4">
                 <img
-                  src="/hf_20260201_180122_282f1384-d23c-409a-93b9-c01a8a95b1d7.avif"
+                  src="/dujjonku-1.avif"
                   alt="두쫀쿠 디퓨저"
                   className="w-full h-full object-cover"
                 />

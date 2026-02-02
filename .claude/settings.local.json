@@ -13,7 +13,11 @@
       "Bash(npm audit fix:*)",
       "Bash(npm ls:*)",
       "Bash(tree:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "Bash(ls:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_click",
+      "Bash(git ls-files:*)"
     ],
     "deny": [],
     "ask": []

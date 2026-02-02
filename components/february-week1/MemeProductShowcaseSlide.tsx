@@ -26,7 +26,7 @@ export default function MemeProductShowcaseSlide() {
             className="relative w-full aspect-[4/3] max-w-3xl mx-auto rounded-2xl overflow-hidden border border-pink-500/30 shadow-2xl shadow-pink-500/10"
           >
             <img
-              src="/hf_20260201_180205_bdac1999-4fb0-4b9f-95ad-f419fa0ab77b.avif"
+              src="/dujjonku-2.avif"
               alt="두쫀쿠 디퓨저 상세"
               className="w-full h-full object-cover"
             />
