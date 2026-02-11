@@ -11,6 +11,15 @@ export default function FebruaryPage() {
       description: '📊 2026년 1분기 KPI 설정 & 악센트 아이디 제품 전략',
       path: '/february/week1',
       color: 'from-rose-500 to-pink-600',
+      status: 'completed'
+    },
+    {
+      week: 2,
+      date: '2026년 2월 9일',
+      title: '2월 2주차 회의록',
+      description: '📝 사업계획서 전쟁 주간 | 2/13 마감 4건 + 네트워크 전략',
+      path: '/february/week2',
+      color: 'from-red-500 to-orange-600',
       status: 'current'
     }
   ];
