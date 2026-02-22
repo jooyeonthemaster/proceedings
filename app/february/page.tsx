@@ -20,6 +20,15 @@ export default function FebruaryPage() {
       description: '📝 사업계획서 전쟁 주간 | 2/13 마감 4건 + 네트워크 전략',
       path: '/february/week2',
       color: 'from-red-500 to-orange-600',
+      status: 'completed'
+    },
+    {
+      week: 3,
+      date: '2026년 2월 23일',
+      title: '2월 4주차 회의록',
+      description: '🚀 AI 커플 서비스 & B2B 파이프라인 | 야판사야 확장 전략',
+      path: '/february/week3',
+      color: 'from-violet-500 to-fuchsia-600',
       status: 'current'
     }
   ];
@@ -58,7 +67,7 @@ export default function FebruaryPage() {
         </div>
 
         {/* Week Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-4xl mx-auto">
           {weeks.map((week, index) => (
             <Link
               key={index}
