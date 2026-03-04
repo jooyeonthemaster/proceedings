@@ -11,6 +11,15 @@ export default function MarchPage() {
       description: '🏆 R&D 서류 합격 & 전쟁의 서막 | 지원사업 5건 + 동서울대 교육 입찰',
       path: '/march/week1',
       color: 'from-amber-500 to-red-600',
+      status: 'completed'
+    },
+    {
+      week: '1-ALL',
+      date: '2026년 3월 2일',
+      title: '3월 1주차 전체 회의록',
+      description: '🎉 R&D 2억 합격 축하 + 디지털 화환 정산 + AI 교육 사업 + 악센트 사이트 개선',
+      path: '/march/week1-all',
+      color: 'from-cyan-500 to-emerald-600',
       status: 'current'
     }
   ];
