@@ -12,6 +12,7 @@ import DongseouldBidSlide from '@/components/march-week1-all/DongseouldBidSlide'
 import AcscentOnlineSlide from '@/components/march-week1-all/AcscentOnlineSlide';
 import DevTeamSlide from '@/components/march-week1-all/DevTeamSlide';
 import KPISlide from '@/components/march-week1-all/KPISlide';
+import QuiverAISlide from '@/components/march-week1-all/QuiverAISlide';
 import ConclusionSlide from '@/components/march-week1-all/ConclusionSlide';
 
 const slides = [
@@ -23,6 +24,7 @@ const slides = [
   AcscentOnlineSlide,
   DevTeamSlide,
   KPISlide,
+  QuiverAISlide,
   ConclusionSlide,
 ];
 
@@ -35,7 +37,8 @@ const sections = [
   { name: '악센트 ID', startIndex: 5, endIndex: 5, color: 'from-orange-500 to-amber-600' },
   { name: '개발팀', startIndex: 6, endIndex: 6, color: 'from-pink-500 to-rose-600' },
   { name: 'KPI', startIndex: 7, endIndex: 7, color: 'from-teal-500 to-emerald-600' },
-  { name: '결론', startIndex: 8, endIndex: 8, color: 'from-cyan-500 to-blue-600' },
+  { name: 'Quiver AI', startIndex: 8, endIndex: 8, color: 'from-indigo-500 to-violet-600' },
+  { name: '결론', startIndex: 9, endIndex: 9, color: 'from-cyan-500 to-blue-600' },
 ];
 
 export default function MarchWeek1AllPage() {
