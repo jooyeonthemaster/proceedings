@@ -20,6 +20,15 @@ export default function MarchPage() {
       description: '🎉 R&D 2억 합격 축하 + 디지털 화환 정산 + AI 교육 사업 + 악센트 사이트 개선',
       path: '/march/week1-all',
       color: 'from-cyan-500 to-emerald-600',
+      status: 'completed'
+    },
+    {
+      week: 2,
+      date: '2026년 3월 9일',
+      title: '3월 2주차 임원진 회의록',
+      description: '📋 R&D 발표평가 후기 + 지원사업 현황 총정리 + 디지털 화환 정산 + WOW 출시 논의',
+      path: '/march/week2',
+      color: 'from-teal-500 to-cyan-600',
       status: 'current'
     }
   ];
