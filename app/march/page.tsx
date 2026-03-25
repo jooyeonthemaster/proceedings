@@ -29,6 +29,15 @@ export default function MarchPage() {
       description: '📋 R&D 발표평가 후기 + 지원사업 현황 총정리 + 디지털 화환 정산 + WOW 출시 논의',
       path: '/march/week2',
       color: 'from-teal-500 to-cyan-600',
+      status: 'completed'
+    },
+    {
+      week: 4,
+      date: '2026년 3월 25일',
+      title: '3월 4주차 전체 회의록',
+      description: '🚀 개발팀 풀가동 선언 + AI 포토부스 영업·마케팅 협업 + 뿌덕 사이트 개선',
+      path: '/march/week4',
+      color: 'from-emerald-500 to-cyan-600',
       status: 'current'
     }
   ];
