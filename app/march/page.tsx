@@ -38,6 +38,15 @@ export default function MarchPage() {
       description: '🚀 개발팀 풀가동 선언 + AI 포토부스 영업·마케팅 협업 + 뿌덕 사이트 개선',
       path: '/march/week4',
       color: 'from-emerald-500 to-cyan-600',
+      status: 'completed'
+    },
+    {
+      week: '4-E',
+      date: '2026년 3월 30일',
+      title: '3월 4주차 임원진 회의록',
+      description: '😢 지원사업 All Fail 현황 + 뿌덕 시즌3 개발 + 자립 각오',
+      path: '/march/week4-exec',
+      color: 'from-slate-600 to-red-900',
       status: 'current'
     }
   ];
