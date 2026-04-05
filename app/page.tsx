@@ -33,6 +33,12 @@ export default function Home() {
       path: '/march',
       year: '2026',
       color: 'from-amber-500 to-red-600'
+    },
+    {
+      name: '4월',
+      path: '/april',
+      year: '2026',
+      color: 'from-indigo-500 to-violet-600'
     }
   ];
 
