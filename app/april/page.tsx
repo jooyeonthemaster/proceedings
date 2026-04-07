@@ -11,6 +11,15 @@ export default function AprilPage() {
       description: '📊 1분기 KPI 총정리 + 지원사업 탈락 원인 분석 + 개발팀 성과 점검 + 전문성 & 조직 방향성 재정립',
       path: '/april/week1',
       color: 'from-indigo-600 to-violet-700',
+      status: 'past'
+    },
+    {
+      week: 1,
+      date: '2026년 4월 8일',
+      title: '4월 1주차 전체 회의록',
+      description: '🚀 Q1 결산 보고 + 서울혁신챌린지 1억 집중 + 외주 영업 본격 가동 + 뿌덕 시즌 4 착수',
+      path: '/april/week1-all',
+      color: 'from-emerald-600 to-cyan-700',
       status: 'current'
     }
   ];
