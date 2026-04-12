@@ -20,6 +20,15 @@ export default function AprilPage() {
       description: '🚀 Q1 결산 보고 + 서울혁신챌린지 1억 집중 + 외주 영업 본격 가동 + 뿌덕 시즌 4 착수',
       path: '/april/week1-all',
       color: 'from-emerald-600 to-cyan-700',
+      status: 'past'
+    },
+    {
+      week: 2,
+      date: '2026년 4월 12일',
+      title: '4월 2주차 전략 회의록',
+      description: '🎯 2026 전략 분석 + 학원 AI vs 포토부스 우선순위 + 4개 시나리오 비교 + 8월 악센트 재계약 판단 프레임',
+      path: '/april/week2',
+      color: 'from-indigo-600 to-violet-700',
       status: 'current'
     }
   ];
