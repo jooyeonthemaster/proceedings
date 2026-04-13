@@ -1,0 +1,171 @@
+</div>
+<div class="nav-controls">
+  <button class="nav-btn" id="btn-prev" aria-label="이전 슬라이드">◀</button>
+  <div class="nav-display"><span id="current-slide">001</span> / <span id="total-slides">118</span></div>
+  <button class="nav-btn" id="btn-next" aria-label="다음 슬라이드">▶</button>
+</div>
+<div class="help-hint"><kbd>←</kbd> <kbd>→</kbd> 이동 · <kbd>ESC</kbd> 목차 · <kbd>Home</kbd>/<kbd>End</kbd> 처음/끝</div>
+<script>
+(function(){
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+
+  const totalEl = document.getElementById('total-slides');
+  const currentEl = document.getElementById('current-slide');
+  const progressEl = document.getElementById('progress-fill');
+  const sidebar = document.getElementById('sidebar');
+
+  totalEl.textContent = String(total).padStart(3, '0');
+
+  function show(i) {
+    if (i < 0) i = 0;
+    if (i >= total) i = total - 1;
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+    current = i;
+    currentEl.textContent = String(i + 1).padStart(3, '0');
+    progressEl.style.width = ((i + 1) / total * 100) + '%';
+    history.replaceState(null, '', '#slide-' + (i + 1));
+    document.querySelectorAll('.sidebar-item').forEach(item => {
+      item.classList.toggle('active', parseInt(item.dataset.slide) === i + 1);
+    });
+    // Scroll active sidebar item into view
+    const activeItem = sidebar.querySelector('.sidebar-item.active');
+    if (activeItem) {
+      activeItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+    // Reset slide body scroll
+    const body = slides[i].querySelector('.slide-body');
+    if (body) body.scrollTop = 0;
+  }
+
+  function prev() { show(current - 1); }
+  function next() { show(current + 1); }
+
+  document.getElementById('btn-prev').addEventListener('click', prev);
+  document.getElementById('btn-next').addEventListener('click', next);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    switch (e.key) {
+      case 'ArrowRight':
+      case 'PageDown':
+      case ' ':
+        e.preventDefault(); next(); break;
+      case 'ArrowLeft':
+      case 'PageUp':
+        e.preventDefault(); prev(); break;
+      case 'Home':
+        e.preventDefault(); show(0); break;
+      case 'End':
+        e.preventDefault(); show(total - 1); break;
+      case 'Escape':
+        e.preventDefault(); toggleSidebar(); break;
+    }
+  });
+
+  // Build sidebar grouped by section_group
+  const groups = {};
+  const groupOrder = [];
+  slides.forEach((s, idx) => {
+    const section = s.dataset.section || 'other';
+    const sectionName = s.dataset.sectionName || section;
+    const groupKey = section;
+    if (!groups[groupKey]) {
+      groups[groupKey] = { name: section + ' · ' + sectionName.replace(/^(S\d+\s*·\s*)?/, ''), items: [] };
+      groupOrder.push(groupKey);
+    }
+    const titleEl = s.querySelector('.section-tag');
+    const counterEl = s.querySelector('.slide-counter');
+    groups[groupKey].items.push({
+      num: idx + 1,
+      title: s.dataset.sectionName || (titleEl ? titleEl.textContent : ('슬라이드 ' + (idx+1)))
+    });
+  });
+
+  // Simpler: group by section code prefix only
+  const simpleGroups = {};
+  const simpleOrder = [];
+  slides.forEach((s, idx) => {
+    const sec = s.dataset.section || 'X';
+    if (!simpleGroups[sec]) {
+      simpleGroups[sec] = [];
+      simpleOrder.push(sec);
+    }
+    simpleGroups[sec].push({
+      num: idx + 1,
+      name: s.dataset.sectionName || ''
+    });
+  });
+
+  const sectionLabels = {
+    'S0': '0 · 커버 & 아젠다',
+    'S1': '1 · 회사 현황 종합',
+    'S2': '2 · 학원 AI 심층 분석',
+    'S3': '3 · AI 포토부스 B2B',
+    'S4': '4 · 외주개발',
+    'S5': '5 · 악센트 아이디 + 와우',
+    'S6': '6 · 악센트 온라인',
+    'S7': '7 · 마케팅팀 리소스',
+    'S8': '8 · Scenario A — 밸런스',
+    'S9': '9 · Scenario B — 올인',
+    'S09': '9 · Scenario B — 올인',
+    'S10': '10 · Scenario C — 캐시 우선',
+    'S11': '11 · Scenario D — 하이브리드',
+    'S12': '12 · 시나리오 비교 요약',
+    'S13': '13 · 인력 배치 상세',
+    'S14': '14 · 2026 로드맵',
+    'S15': '15 · 최종 요약',
+    'S13-S15': '13~15 · 통합 부록'
+  };
+
+  simpleOrder.forEach(secKey => {
+    const heading = document.createElement('div');
+    heading.className = 'sidebar-heading';
+    heading.textContent = sectionLabels[secKey] || secKey;
+    sidebar.appendChild(heading);
+    simpleGroups[secKey].forEach(item => {
+      const a = document.createElement('a');
+      a.className = 'sidebar-item';
+      a.dataset.slide = item.num;
+      a.textContent = String(item.num).padStart(3, '0') + ' · ' + (item.name || '').slice(0, 32);
+      a.addEventListener('click', () => {
+        show(item.num - 1);
+        sidebar.classList.remove('open');
+      });
+      sidebar.appendChild(a);
+    });
+  });
+
+  document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+  function toggleSidebar() {
+    sidebar.classList.toggle('open');
+  }
+
+  // Close sidebar on outside click
+  document.addEventListener('click', (e) => {
+    if (!sidebar.contains(e.target) && !e.target.closest('#sidebar-toggle')) {
+      sidebar.classList.remove('open');
+    }
+  });
+
+  // Deep link
+  const hash = location.hash.match(/slide-(\d+)/);
+  if (hash) show(parseInt(hash[1]) - 1);
+  else show(0);
+
+  // Swipe support
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) > 60) {
+      if (dx < 0) next(); else prev();
+    }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
