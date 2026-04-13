@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>네안데르 4월 13일 임원진 회의 — 인터랙티브 프레젠테이션</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0A0A0F;
+  --bg-soft: #12121C;
+  --bg-card: #1A1A28;
+  --bg-card-hi: #22222E;
+  --amber: #FFB020;
+  --amber-soft: rgba(255, 176, 32, 0.12);
+  --amber-border: rgba(255, 176, 32, 0.35);
+  --cyan: #00E5FF;
+  --cyan-soft: rgba(0, 229, 255, 0.10);
+  --mint: #34D399;
+  --red: #FF4E64;
+  --red-soft: rgba(255, 78, 100, 0.12);
+  --text: #EAEAF0;
+  --text-soft: #9AA0B4;
+  --text-mute: #6B7088;
+  --border: #2A2A3A;
+  --border-soft: #1E1E2A;
+  --font-sans: 'Pretendard', 'IBM Plex Sans KR', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Space Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(255,176,32,0.035), transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(0,229,255,0.03), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--border-soft);
+  z-index: 100;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--amber) 0%, var(--cyan) 100%);
+  width: 0%;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 12px var(--amber);
+}
+
+/* Deck */
+.deck {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Slide */
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: 48px 72px 40px;
+  display: none;
+  flex-direction: column;
+  background: transparent;
+  animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.slide.active { display: flex; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Slide chrome */
+.slide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 14px;
+  margin-bottom: 28px;
+  flex-shrink: 0;
+}
+.section-tag {
+  color: var(--amber);
+  font-weight: 700;
+}
+.slide-counter {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--text-soft);
+}
+
+.slide-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  overflow-y: auto;
+  min-height: 0;
+  padding-right: 4px;
+}
+
+.slide-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: var(--text-mute);
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-soft);
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Layout variants */
+.layout-cover {
+  justify-content: center;
+}
+.layout-stat-grid { justify-content: center; }
+.layout-quote { justify-content: center; }
+.layout-end {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Headlines */
+h1.headline, .headline {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--text);
+}
+.subheadline, p.subheadline {
+  font-size: 22px;
+  color: var(--text-soft);
+  margin-top: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+.slide-body h1,
+.slide-body h2 {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: var(--text);
+}
+.slide-body h2 {
+  font-size: 36px;
+}
+.slide-body h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.slide-body h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.slide-body p {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+/* Stat grid */
+.stat-grid {
+  display: grid;
+  gap: 20px;
+}
+.stat-grid-1 { grid-template-columns: 1fr; }
+.stat-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.stat-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.stat-grid-4 { grid-template-columns: repeat(4, 1fr); }
+.stat-grid-5 { grid-template-columns: repeat(5, 1fr); }
+.stat-grid-6 { grid-template-columns: repeat(3, 1fr); }
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 26px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--amber-border);
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--amber), transparent);
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--text-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.stat-number {
+  font-family: var(--font-mono);
+  font-size: 46px;
+  font-weight: 700;
+  color: var(--amber);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.stat-number .num { color: var(--amber); }
+.stat-unit {
+  font-size: 16px;
+  color: var(--text-soft);
+  font-weight: 500;
+  font-family: var(--font-sans);
+}
+.stat-note {
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-top: 12px;
+  line-height: 1.45;
+}
+
+/* Callout */
+.callout-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.callout {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 18px;
+  padding: 16px 22px;
+  background: var(--bg-card);
+  border-left: 3px solid var(--cyan);
+  border-radius: 0 10px 10px 0;
+  transition: border-color 0.3s;
+}
+.callout:hover { border-left-color: var(--amber); }
+.callout-label {
+  font-size: 11px;
+  color: var(--cyan);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  align-self: center;
+}
+.callout-text {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* Bullet block */
+.bullet-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 26px;
+}
+.bullet-block-label {
+  font-size: 12px;
+  color: var(--amber);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.bullet-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.bullet-list li {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text);
+  padding-left: 20px;
+  position: relative;
+}
+.bullet-list li::before {
+  content: '';
+  position: absolute;
+  left: 2px; top: 9px;
+  width: 6px; height: 6px;
+  background: var(--amber);
+  border-radius: 50%;
+}
+.bullet-list li strong {
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+/* Quote */
+.quote {
+  background: var(--bg-card);
+  border-left: 4px solid var(--amber);
+  padding: 28px 36px;
+  border-radius: 0 14px 14px 0;
+  position: relative;
+  margin: 8px 0;
+}
+.quote::before {
+  content: '\201C';
+  position: absolute;
+  top: 4px; left: 16px;
+  font-size: 80px;
+  color: var(--amber);
+  opacity: 0.18;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+.quote-text {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--text);
+  font-style: italic;
+  position: relative;
+  font-weight: 400;
+}
+.quote-source {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--text-mute);
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Big conclusion */
+.big-conclusion {
+  background: linear-gradient(135deg, rgba(255,176,32,0.10), rgba(0,229,255,0.08));
+  border: 1px solid var(--amber);
+  border-radius: 20px;
+  padding: 56px 64px;
+  text-align: center;
+  box-shadow: 0 0 80px rgba(255,176,32,0.08) inset;
+}
+.conclusion-text {
+  font-size: 32px;
+  line-height: 1.45;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.015em;
+}
+
+/* Tables */
+.table-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  overflow-x: auto;
+}
+.table-caption {
+  font-size: 12px;
+  color: var(--amber);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+.data-table th,
+.data-table td {
+  padding: 9px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: middle;
+}
+.data-table th {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+  padding-top: 8px;
+  padding-bottom: 10px;
+}
+.data-table td {
+  color: var(--text);
+}
+.data-table tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.015);
+}
+.data-table tbody tr:hover {
+  background: rgba(255,176,32,0.04);
+}
+.table-note {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--text-mute);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Timeline */
+.timeline {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  padding-left: 8px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px; top: 16px; bottom: 16px;
+  width: 2px;
+  background: var(--border);
+}
+.timeline-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 18px;
+  align-items: start;
+  position: relative;
+}
+.step-number {
+  width: 46px; height: 46px;
+  background: var(--bg-card);
+  border: 2px solid var(--amber);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: var(--amber);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+.step-body {
+  padding-top: 10px;
+}
+.step-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.step-desc {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.55;
+}
+
+/* Comparison */
+.comparison-grid {
+  display: grid;
+  gap: 16px;
+}
+.comparison-2 { grid-template-columns: repeat(2, 1fr); }
+.comparison-3 { grid-template-columns: repeat(3, 1fr); }
+.comparison-4 { grid-template-columns: repeat(4, 1fr); }
+.comparison-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+}
+.comparison-pro { border-left: 3px solid var(--mint); }
+.comparison-con { border-left: 3px solid var(--red); }
+.comparison-title {
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.comparison-pro .comparison-title { color: var(--mint); }
+.comparison-con .comparison-title { color: var(--red); }
+.comparison-item ul, .comparison-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.comparison-item ul li, .comparison-list li {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text);
+  padding-left: 14px;
+  position: relative;
+}
+.comparison-item ul li::before, .comparison-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--text-soft);
+}
+.comparison-pro ul li::before { background: var(--mint); }
+.comparison-con ul li::before { background: var(--red); }
+
+/* Person card */
+.person-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.person-card::before {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, var(--amber-soft), transparent 70%);
+  pointer-events: none;
+}
+.person-name {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+}
+.person-role {
+  font-size: 13px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+.person-desc {
+  font-size: 15px;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+/* Mission grid */
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.mission-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 26px;
+  border-top: 3px solid var(--amber);
+  transition: transform 0.3s;
+}
+.mission-card:hover { transform: translateY(-2px); }
+.mission-who {
+  font-size: 12px;
+  color: var(--amber);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.mission-task {
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.mission-why {
+  font-size: 12px;
+  color: var(--text-soft);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Priority stack */
+.priority-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.priority-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--amber);
+  border-radius: 10px;
+  padding: 16px 22px;
+}
+.priority-rank {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--amber);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+/* Decision list */
+.decision-list { display: flex; flex-direction: column; gap: 10px; }
+.decision-item { display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; }
+.decision-num { width: 36px; height: 36px; border-radius: 50%; background: var(--amber-soft); border: 2px solid var(--amber); color: var(--amber); font-family: var(--font-mono); font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+.decision-title { font-size: 14px; color: var(--text); font-weight: 700; margin-bottom: 4px; }
+.decision-body { font-size: 13px; color: var(--text-soft); line-height: 1.5; }
+
+/* KPI cards */
+.kpi-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.kpi-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--cyan); border-radius: 12px; padding: 22px 24px; }
+.kpi-label { font-size: 11px; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 10px; }
+.kpi-value { font-family: var(--font-mono); font-size: 34px; font-weight: 700; color: var(--cyan); line-height: 1.1; letter-spacing: -0.02em; }
+.kpi-sub { font-size: 12px; color: var(--text-soft); margin-top: 10px; line-height: 1.45; }
+
+/* Callout variants */
+.callout-block, .callout-primary, .callout-accent, .callout-warn, .callout-warning {
+  background: var(--bg-card); border-left: 3px solid var(--cyan); padding: 16px 22px;
+  border-radius: 0 10px 10px 0; font-size: 14px; color: var(--text); line-height: 1.55;
+}
+.callout-primary { border-left-color: var(--amber); }
+.callout-accent { border-left-color: var(--amber); background: var(--amber-soft); }
+.callout-warn, .callout-warning { border-left-color: var(--red); background: var(--red-soft); }
+
+/* Path / branch diagrams */
+.path-diagram { display: flex; flex-direction: column; gap: 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; }
+.path-root { text-align: center; padding: 14px; background: var(--amber-soft); border: 1px solid var(--amber-border); border-radius: 8px; font-weight: 700; color: var(--amber); font-size: 14px; }
+.path-branches { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+.path-branch { background: var(--bg-card-hi); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; border-top: 3px solid var(--cyan); }
+.branch-head { font-size: 11px; color: var(--cyan); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.branch-body { font-size: 12.5px; color: var(--text-soft); line-height: 1.55; }
+
+/* Scenario tree */
+.tree-container { display: flex; flex-direction: column; gap: 12px; }
+.tree-root { text-align: center; padding: 14px 20px; background: var(--amber-soft); border: 1px solid var(--amber-border); border-radius: 10px; font-weight: 700; color: var(--amber); font-size: 14px; }
+.tree-branches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.tree-branch { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; border-top: 3px solid var(--cyan); }
+.tree-branch-label { font-size: 11px; color: var(--cyan); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+.tree-branch-body { font-size: 12px; color: var(--text-soft); line-height: 1.5; }
+.tree-result { font-size: 11px; color: var(--amber); font-weight: 700; margin-top: 6px; }
+
+/* Split layout */
+.split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.split-col { display: flex; flex-direction: column; gap: 16px; }
+
+/* Notion structure */
+.notion-tree { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 26px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.8; color: var(--text-soft); }
+.notion-tree .folder { color: var(--amber); font-weight: 700; }
+.notion-tree .page { color: var(--cyan); }
+
+/* End block */
+.end-block { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 40px; }
+.end-mark { font-size: 64px; color: var(--amber); font-weight: 800; letter-spacing: 0.1em; font-family: var(--font-mono); }
+.end-deck { font-size: 18px; color: var(--text-soft); }
+.end-date { font-size: 13px; color: var(--text-mute); font-family: var(--font-mono); letter-spacing: 0.05em; }
+
+/* Cell colors */
+.cell-neg, td.neg { color: var(--red); }
+.cell-pos, td.pos { color: var(--mint); }
+.cell-amber { color: var(--amber); font-weight: 700; }
+
+/* Highlight rows */
+.row-highlight { background: rgba(255,176,32,0.08) !important; }
+.row-highlight td { color: var(--amber); font-weight: 700; }
+
+/* Stat card variants */
+.stat-card-warning { border-left-color: var(--red); }
+.stat-card-warning::before { background: var(--red); }
+.stat-card-warning .stat-number { color: var(--red); }
+.stat-card-positive { border-left-color: var(--mint); }
+.stat-card-positive::before { background: var(--mint); }
+.stat-card-positive .stat-number { color: var(--mint); }
+.stat-card-cyan { border-left-color: var(--cyan); }
+.stat-card-cyan::before { background: var(--cyan); }
+.stat-card-cyan .stat-number { color: var(--cyan); }
+
+/* Navigation controls */
+.nav-controls {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(18, 18, 28, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 14px;
+  z-index: 50;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.nav-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-family: var(--font-mono);
+}
+.nav-btn:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+  background: var(--amber-soft);
+}
+.nav-display {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-soft);
+  min-width: 80px;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+.nav-display #current-slide {
+  color: var(--amber);
+  font-weight: 700;
+}
+
+/* Sidebar */
+.sidebar-toggle {
+  position: fixed;
+  top: 18px; left: 18px;
+  width: 38px; height: 38px;
+  background: rgba(18, 18, 28, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  z-index: 48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.sidebar-toggle:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+.section-sidebar {
+  position: fixed;
+  left: 0; top: 0;
+  width: 300px;
+  height: 100%;
+  background: var(--bg-soft);
+  border-right: 1px solid var(--border);
+  padding: 72px 16px 24px;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 45;
+  overflow-y: auto;
+}
+.section-sidebar.open {
+  transform: translateX(0);
+  box-shadow: 24px 0 48px rgba(0,0,0,0.5);
+}
+.sidebar-heading {
+  font-size: 10px;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 800;
+  margin: 18px 12px 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.sidebar-heading:first-child { margin-top: 0; }
+.sidebar-item {
+  display: block;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--text-soft);
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  font-family: var(--font-mono);
+  line-height: 1.4;
+  transition: all 0.15s;
+}
+.sidebar-item:hover {
+  background: var(--bg-card);
+  color: var(--text);
+}
+.sidebar-item.active {
+  background: var(--amber-soft);
+  color: var(--amber);
+  border-color: var(--amber-border);
+  font-weight: 700;
+}
+
+/* Help overlay */
+.help-hint {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  font-size: 11px;
+  color: var(--text-mute);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  background: rgba(18,18,28,0.8);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  z-index: 50;
+}
+.help-hint kbd {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 10px;
+  color: var(--amber);
+}
+
+/* Scrollbar */
+.slide-body::-webkit-scrollbar,
+.section-sidebar::-webkit-scrollbar { width: 6px; }
+.slide-body::-webkit-scrollbar-track,
+.section-sidebar::-webkit-scrollbar-track { background: transparent; }
+.slide-body::-webkit-scrollbar-thumb,
+.section-sidebar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+  .slide { padding: 40px 56px 32px; }
+  .headline { font-size: 48px; }
+  .stat-number { font-size: 40px; }
+  .slide-body h1, .slide-body h2 { font-size: 36px; }
+}
+@media (max-width: 1100px) {
+  .slide { padding: 32px 40px 28px; }
+  .headline { font-size: 40px; }
+  .stat-number { font-size: 34px; }
+  .stat-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .stat-grid-6 { grid-template-columns: repeat(2, 1fr); }
+  .slide-body h1, .slide-body h2 { font-size: 28px; }
+  .callout { grid-template-columns: 100px 1fr; }
+  .comparison-4 { grid-template-columns: repeat(2, 1fr); }
+  .tree-branches { grid-template-columns: 1fr; }
+  .split-grid { grid-template-columns: 1fr; }
+}
+
+/* Visual timeline (horizontal) */
+.h-timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+.h-timeline-row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border-soft); align-items: start; }
+.h-timeline-row:last-child { border-bottom: none; }
+.h-timeline-date { font-family: var(--font-mono); font-size: 13px; color: var(--amber); font-weight: 700; padding-top: 2px; }
+.h-timeline-content { font-size: 13px; color: var(--text); line-height: 1.55; }
+.h-timeline-content .sub { display: block; font-size: 12px; color: var(--text-soft); margin-top: 4px; padding-left: 12px; border-left: 2px solid var(--border); }
+.h-timeline-highlight { background: var(--amber-soft); border-radius: 8px; padding: 14px 16px; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-bar-fill" id="progress-fill"></div></div>
+
+<button class="sidebar-toggle" id="sidebar-toggle">&#9776;</button>
+<nav class="section-sidebar" id="sidebar"></nav>
+
+<div class="deck">
+
+<!-- ==================== SLIDE 1: COVER ==================== -->
+<div class="slide layout-cover" data-section="S0" data-sectionName="커버">
+  <div class="slide-body" style="justify-content:center;gap:28px;">
+    <p style="font-size:13px;color:var(--amber);font-weight:700;letter-spacing:0.15em;text-transform:uppercase;">Neander Executive Meeting</p>
+    <h1 class="headline">네안데르 4월 13일<br>임원진 회의</h1>
+    <p class="subheadline">3대 사업 우선순위 확정 & 학원 AI 시장검증 실행계획</p>
+    <div style="display:flex;gap:24px;margin-top:18px;flex-wrap:wrap;">
+      <span style="font-family:var(--font-mono);font-size:14px;color:var(--text-mute);">2026.04.13 (월)</span>
+      <span style="font-size:14px;color:var(--text-soft);">참석: 유재영(CEO) · 김주연(CTO) · 유선화(CMO) · 이동주(재무)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 2: 회의 배경 ==================== -->
+<div class="slide" data-section="S0" data-sectionName="회의 배경">
+  <div class="slide-header">
+    <span class="section-tag">회의 배경</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>왜 오늘 이 회의인가</h2>
+    <div class="callout-list">
+      <div class="callout">
+        <span class="callout-label">4/12 사전 검토</span>
+        <span class="callout-text">전사 전략 프레임 <strong>Scenario D(하이브리드)</strong> 채택 완료. 3대 사업의 우선순위를 재확인하고, 학원 AI 솔루션의 시장 검증 전략을 구체화한다.</span>
+      </div>
+      <div class="callout">
+        <span class="callout-label">CTO 출발 임박</span>
+        <span class="callout-text">김주연 CTO <strong>4/16 이탈리아 출발</strong> 예정. 출발 전까지 각 임원의 4월 미션을 명확히 확정해야 한다.</span>
+      </div>
+      <div class="callout">
+        <span class="callout-label">핵심 과제</span>
+        <span class="callout-text">감이 아니라 <strong>데이터로 판단</strong>한다. 4월은 시장 반응을 체계적으로 수집하고, 5월 출시 모델을 확정하는 달이다.</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 3: 제1목표 ==================== -->
+<div class="slide" data-section="S1" data-sectionName="제1목표: 악센트 매출 사수">
+  <div class="slide-header">
+    <span class="section-tag">전사 3대 우선순위</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>제1목표 — 악센트 아이디<br>오프라인+와우 매출 사수</h2>
+    <div class="stat-grid stat-grid-3">
+      <div class="stat-card">
+        <div class="stat-label">오프라인 목표</div>
+        <div class="stat-number">1,500<span class="stat-unit">만원/월</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">와우 목표</div>
+        <div class="stat-number">1,000<span class="stat-unit">만원/월</span></div>
+      </div>
+      <div class="stat-card stat-card-cyan">
+        <div class="stat-label">온라인 신규 목표</div>
+        <div class="stat-number" style="color:var(--cyan);">500<span class="stat-unit">만원/월</span></div>
+      </div>
+    </div>
+    <div class="callout-accent" style="margin-top:8px;">
+      <strong>5~7월 생존의 기반.</strong> 악센트 매출이 흔들리면 런웨이가 더 빨리 소진되고, 7월 말 판단 자체가 불가능해진다.
+    </div>
+    <div class="bullet-block">
+      <div class="bullet-block-label">담당</div>
+      <ul class="bullet-list">
+        <li><strong>유선화(CMO) + 김정연</strong> — 악센트 아이디 오프라인/온라인 마케팅 유지·성장</li>
+        <li><strong>이동주</strong> — 매장 운영 관리, 재무 관리 유지</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 4: 제2목표 ==================== -->
+<div class="slide" data-section="S1" data-sectionName="제2목표: AI 포토부스 B2B">
+  <div class="slide-header">
+    <span class="section-tag">전사 3대 우선순위</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>제2목표 — AI 포토부스 B2B<br>축제·행사 영업</h2>
+    <p>상품 개발 완료 + 제안서(21p) 완성. 지금 필요한 것은 <strong>영업 전략의 구체화</strong>다.</p>
+    <div class="table-wrap">
+      <div class="table-caption">영업 타겟 우선순위</div>
+      <table class="data-table">
+        <thead>
+          <tr><th>순위</th><th>타겟</th><th>시급성</th><th>단가</th><th>핵심 접근법</th></tr>
+        </thead>
+        <tbody>
+          <tr class="row-highlight"><td>1순위</td><td>지자체 축제</td><td>5~6월 봄 축제 막차</td><td>중~고</td><td>나라장터 모니터링 + 구청/시청 콜드콜</td></tr>
+          <tr><td>2순위</td><td>대학 축제</td><td>5월 대축제 시즌</td><td>저~중</td><td>총학생회 인스타 DM + 전화 동시 접근</td></tr>
+          <tr><td>3순위</td><td>기업 행사/박람회</td><td>중기</td><td>고 (300~500만+)</td><td>링크드인 / 대표번호 경유</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="bullet-block">
+      <div class="bullet-block-label">핵심 원칙</div>
+      <ul class="bullet-list">
+        <li>기존 완성된 상품 기준으로 <strong>영업 먼저</strong></li>
+        <li>추가 기능 개발은 학원 AI MVP 안정화 후</li>
+        <li>첫 1~2건은 <strong>원가 수준이라도 레퍼런스 확보</strong>가 우선</li>
+        <li>담당: <strong>김주희(영업) + 유재영(큰 건 동행) + 이동주(현장 운영)</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 5: 제3목표 ==================== -->
+<div class="slide" data-section="S1" data-sectionName="제3목표: 학원 AI">
+  <div class="slide-header">
+    <span class="section-tag">전사 3대 우선순위</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>제3목표 — 학원 AI 솔루션<br>시장 검증 & 개발</h2>
+    <div class="stat-grid stat-grid-3">
+      <div class="stat-card">
+        <div class="stat-label">우선순위</div>
+        <div class="stat-number" style="font-size:64px;">#3</div>
+        <div class="stat-note">전사 3대 사업 중 3번째이지만, 미래 성장의 핵심</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">4월 핵심 과제</div>
+        <div class="stat-number" style="font-size:28px;color:var(--cyan);">시장 검증</div>
+        <div class="stat-note">감이 아니라 데이터로. 가설 기반 체계적 테스트</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">5월 목표</div>
+        <div class="stat-number" style="font-size:28px;color:var(--mint);">모델 확정</div>
+        <div class="stat-note">4월 데이터 기반 과금 모델 & 출시 전략 확정</div>
+      </div>
+    </div>
+    <div class="quote">
+      <div class="quote-text">4월 시장 조사 → 데이터 기반 1차 판단 → 5월 출시 모델 확정. 모든 시나리오를 사전에 정의하고, 가지치기(decision tree) 방식으로 설계해서 접근한다.</div>
+      <div class="quote-source">회의 결정사항</div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 6: 학원 AI 연간 목표 ==================== -->
+<div class="slide" data-section="S2" data-sectionName="학원 AI 연간 목표">
+  <div class="slide-header">
+    <span class="section-tag">학원 AI 솔루션</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>학원 AI 연간 목표 & 과금 모델</h2>
+    <div class="stat-grid stat-grid-1">
+      <div class="stat-card" style="text-align:center;">
+        <div class="stat-label">2026 월 매출 목표</div>
+        <div class="stat-number" style="justify-content:center;font-size:64px;">3,700<span class="stat-unit">만원/월</span></div>
+        <div class="stat-note">과금 모델은 아직 미확정 → 고객 반응 기반 판단</div>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <div class="table-caption">과금 모델 후보 비교</div>
+      <table class="data-table">
+        <thead>
+          <tr><th>모델</th><th>구조</th><th>3,700만 달성 조건</th><th>장점</th><th>단점</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cell-amber">A. 독점 구독</td><td>구별 독점 계약, 월 50만원</td><td>74개 학원</td><td>안정적 MRR, FOMO 영업</td><td>초기 영업 난도 높음</td></tr>
+          <tr><td class="cell-amber">B. 크레딧 기반</td><td>사용량 기반 과금</td><td>학원 수 x 평균 사용량</td><td>진입장벽 낮음, 빠른 확산</td><td>MRR 변동성, 이탈 쉬움</td></tr>
+          <tr><td class="cell-amber">C. 하이브리드</td><td>기본료 + 크레딧</td><td>기본료 확보 + 사용량 업셀</td><td>양쪽 장점 결합</td><td>과금 구조 복잡</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 7: 시나리오 트리 — 영업 채널 ==================== -->
+<div class="slide" data-section="S2" data-sectionName="영업 채널 시나리오">
+  <div class="slide-header">
+    <span class="section-tag">시장 검증 전략</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>시나리오 트리 — 영업 채널</h2>
+    <p>유재영 직접 방문, 대흥 학원 10곳. 가설 기반 체계적 테스트.</p>
+    <div class="tree-container">
+      <div class="tree-root">4월 시장 조사 — 영업 채널: 유재영 직접 방문 (대흥 학원 10곳)</div>
+      <div class="tree-branches">
+        <div class="tree-branch">
+          <div class="tree-branch-label">테스트 A</div>
+          <div class="tree-branch-body">가격 먼저 제시 후 기능 소개</div>
+          <div class="tree-result">긍정 → 가격 수용도 높음, 독점 모델 유력</div>
+          <div class="tree-result">기능만 관심 → 크레딧 모델 검토</div>
+          <div class="tree-result" style="color:var(--red);">거부 → 가격대 재조정 필요</div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-branch-label">테스트 B</div>
+          <div class="tree-branch-body">기능 먼저 소개 후 가격 제시</div>
+          <div class="tree-result">"얼마예요?" 먼저 물어봄 → 구매 의향 높음</div>
+          <div class="tree-result">감탄하지만 가격 주저 → 무료 체험 후 전환</div>
+          <div class="tree-result" style="color:var(--red);">기능 자체에 무관심 → 제품 피벗 필요</div>
+        </div>
+        <div class="tree-branch">
+          <div class="tree-branch-label">테스트 C</div>
+          <div class="tree-branch-body">가격 언급 없이 무료 체험만 제안</div>
+          <div class="tree-result">적극 수용 → 체험 후 전환율 측정</div>
+          <div class="tree-result">"무료면 해볼게요" → 진짜 니즈 vs 호의 구분</div>
+          <div class="tree-result" style="color:var(--red);">거부 → 니즈 없음</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 8: 10곳 미팅 배분 ==================== -->
+<div class="slide" data-section="S2" data-sectionName="미팅 배분 계획">
+  <div class="slide-header">
+    <span class="section-tag">시장 검증 전략</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>10곳 미팅 배분 계획</h2>
+    <p>단순히 "지불 의사 있어요?" 수준이 아니라, 사전에 가설을 설정하고 여러 경우의 수를 나눠서 접근한다.</p>
+    <div class="table-wrap">
+      <div class="table-caption">미팅별 테스트 조합</div>
+      <table class="data-table">
+        <thead>
+          <tr><th>미팅 #</th><th>테스트 조합</th><th>기록 포인트</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cell-amber">1~3번</td><td>가격 먼저 + 핵심 기능 중심 + FOMO</td><td>가격 반응 (표정, 첫 마디, 후속 질문)</td></tr>
+          <tr><td class="cell-amber">4~6번</td><td>기능 먼저 + 전체 소개 + 무료 체험</td><td>어떤 기능에서 눈이 커지는지</td></tr>
+          <tr><td class="cell-amber">7~8번</td><td>고민 청취 먼저 + 맞춤 소개 + 가격 미언급</td><td>학원이 진짜 겪는 페인포인트</td></tr>
+          <tr class="row-highlight"><td>9~10번</td><td>1~8번 결과 기반 최적 조합</td><td>검증된 최적 영업 스크립트 도출</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout-accent">
+      <strong>핵심:</strong> 디테일한 반응을 전부 기록한다. 9~10번째 미팅에서 최적 영업 스크립트를 도출하는 것이 목표.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 9: 마케팅 채널 시나리오 ==================== -->
+<div class="slide" data-section="S2" data-sectionName="마케팅 채널 시나리오">
+  <div class="slide-header">
+    <span class="section-tag">시장 검증 전략</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>시나리오 트리 — 마케팅 채널</h2>
+    <p>유선화 인스타 광고 2개 콘텐츠 — AB 비교 테스트</p>
+    <div class="split-grid">
+      <div class="split-col">
+        <div class="stat-card" style="border-top:3px solid var(--cyan);">
+          <div class="stat-label">콘텐츠 1안 — 시장 조사형</div>
+          <div style="font-size:16px;font-weight:700;color:var(--text);margin:12px 0 8px;">무료 체험 + 학원 정보 수집</div>
+          <div class="stat-note" style="font-size:13px;">
+            "AI가 시험지를 만들어준다? 선생님, 직접 체험해보세요"<br><br>
+            <strong style="color:var(--cyan);">목적:</strong> 시장 니즈 확인 + 잠재 고객 정보 확보 + 미팅 파이프라인 구축
+          </div>
+        </div>
+      </div>
+      <div class="split-col">
+        <div class="stat-card" style="border-top:3px solid var(--amber);">
+          <div class="stat-label">콘텐츠 2안 — 사전예약형</div>
+          <div style="font-size:16px;font-weight:700;color:var(--text);margin:12px 0 8px;">50만원 독점 이용권 사전 예약</div>
+          <div class="stat-note" style="font-size:13px;">
+            "우리 구에 딱 3자리. AI 학원 솔루션 독점 이용권 사전 예약 모집 중"<br><br>
+            <strong style="color:var(--amber);">목적:</strong> 50만원 가격에 대한 실제 시장 반응 확인. 사전 고객 확보.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 10: 마케팅 성공 지표 ==================== -->
+<div class="slide" data-section="S2" data-sectionName="마케팅 성공 지표">
+  <div class="slide-header">
+    <span class="section-tag">시장 검증 전략</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>마케팅 채널 — 성공 지표</h2>
+    <div class="split-grid">
+      <div class="split-col">
+        <h3>콘텐츠 1안 성공 지표</h3>
+        <div class="kpi-grid" style="grid-template-columns:1fr;">
+          <div class="kpi-card">
+            <div class="kpi-label">신청 목표</div>
+            <div class="kpi-value">10건+</div>
+            <div class="kpi-sub">미팅 전환 3건 이상</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">수집 데이터</div>
+            <div class="kpi-value" style="font-size:18px;">구별 반응</div>
+            <div class="kpi-sub">학원명, 위치, 규모, 과목, 연락처, 희망 미팅일, 현재 제작 방식</div>
+          </div>
+        </div>
+      </div>
+      <div class="split-col">
+        <h3>콘텐츠 2안 성공 지표</h3>
+        <div class="kpi-grid" style="grid-template-columns:1fr;">
+          <div class="kpi-card">
+            <div class="kpi-label">사전 예약 목표</div>
+            <div class="kpi-value">3건+</div>
+            <div class="kpi-sub">50만원 가격 검증 완료</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">관심 지표</div>
+            <div class="kpi-value" style="font-size:18px;">문의 10건+</div>
+            <div class="kpi-sub">관심은 있으나 가격 조정 검토 시그널</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="callout-block" style="margin-top:8px;">
+      <strong>광고 타겟팅:</strong> 서울 전역(구별 성과 비교) / 관심사: 학원, 교육, 입시, 내신 / 연령: 30~55세 / 예산: 일 2~3만원 x 10일 = 20~30만원
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 11: 4월 말 1차 판단 기준 ==================== -->
+<div class="slide" data-section="S2" data-sectionName="1차 판단 기준">
+  <div class="slide-header">
+    <span class="section-tag">시장 검증 전략</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>4월 말 — 1차 판단 기준</h2>
+    <div class="table-wrap">
+      <div class="table-caption">판단 항목별 조건 매트릭스</div>
+      <table class="data-table">
+        <thead>
+          <tr><th>판단 항목</th><th style="color:var(--mint);">독점 모델 확정</th><th style="color:var(--cyan);">크레딧 전환</th><th style="color:var(--red);">피벗 필요</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cell-amber">직접 미팅(10곳) 구매 의향</td>
+            <td class="cell-pos">3곳 이상 "50만원 OK"</td>
+            <td>5곳 이상 "기능은 좋은데 비쌈"</td>
+            <td class="cell-neg">7곳 이상 무관심</td>
+          </tr>
+          <tr>
+            <td class="cell-amber">인스타 2안(50만원) 예약</td>
+            <td class="cell-pos">3건 이상 예약</td>
+            <td>문의만 있고 예약 0</td>
+            <td class="cell-neg">노출 대비 클릭률 1% 미만</td>
+          </tr>
+          <tr>
+            <td class="cell-amber">인스타 1안(무료체험) 신청</td>
+            <td class="cell-pos">10건 이상 + 미팅 전환 3건+</td>
+            <td>신청 있으나 미팅 전환 낮음</td>
+            <td class="cell-neg">5건 미만</td>
+          </tr>
+          <tr>
+            <td class="cell-amber">기능별 반응</td>
+            <td class="cell-pos">3개 이상 "이거 꼭 필요"</td>
+            <td>1~2개만 반응</td>
+            <td class="cell-neg">전반적 무관심</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout-warn">
+      <strong>원칙:</strong> 데이터가 방향을 알려준다. 감정이 아니라 숫자로 판단하고, 5월 초에 과금 모델을 확정한다.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 12: 김주연 CTO — 역할 ==================== -->
+<div class="slide" data-section="S3" data-sectionName="김주연(CTO) 역할">
+  <div class="slide-header">
+    <span class="section-tag">임원별 미션</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <div class="person-card">
+      <div class="person-name">김주연</div>
+      <div class="person-role">CTO — 커맨드센터 & 메인 개발자</div>
+      <div class="person-desc">개발 총괄. 학원 AI 솔루션 핵심 로직 설계 및 개발. 전사 기술 방향 컨트롤타워.<br>4/16 이탈리아 출발 — 원격 개발 + 커맨드센터 역할 유지.</div>
+    </div>
+    <h3>4/15까지 세팅 (출발 전)</h3>
+    <div class="mission-grid">
+      <div class="mission-card">
+        <div class="mission-who">제연 분업</div>
+        <div class="mission-task">개발 로드맵 확정 + 김제연 분업 구조 확정</div>
+        <div class="mission-why">이탈리아 가기 전 분업 라인 명확히</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-who">선화 시연소스</div>
+        <div class="mission-task">콘텐츠용 시연 영상 소스 제공</div>
+        <div class="mission-why">선화가 콘텐츠 만들 수 있도록</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-who">재영 데모환경</div>
+        <div class="mission-task">영업용 데모 환경 세팅</div>
+        <div class="mission-why">학원 방문 시 바로 시연 가능하게</div>
+      </div>
+      <div class="mission-card">
+        <div class="mission-who">동주 테스트계정</div>
+        <div class="mission-task">QA용 테스트 계정 및 접근 권한</div>
+        <div class="mission-why">동주가 바로 QA 시작할 수 있게</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 13: 김주연 CTO — 커맨드센터 ==================== -->
+<div class="slide" data-section="S3" data-sectionName="김주연 커맨드센터">
+  <div class="slide-header">
+    <span class="section-tag">임원별 미션</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>커맨드센터 운영 원칙<br><span style="font-size:20px;color:var(--text-soft);font-weight:400;">이탈리아 체류 중</span></h2>
+    <div class="stat-grid stat-grid-4">
+      <div class="stat-card">
+        <div class="stat-label">일일 공유</div>
+        <div class="stat-number" style="font-size:28px;">매일 1회</div>
+        <div class="stat-note">슬랙/노션으로 개발 진행 상황 공유</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">인사이트 확인</div>
+        <div class="stat-number" style="font-size:28px;">24h 내</div>
+        <div class="stat-note">재영/선화 현장 인사이트 확인 + 제품 반영 판단</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">긴급 대응</div>
+        <div class="stat-number" style="font-size:22px;color:var(--red);">제연 1차</div>
+        <div class="stat-note">긴급 기술 이슈 시 제연 1차 대응 → 주연 에스컬레이션</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">화상 미팅</div>
+        <div class="stat-number" style="font-size:28px;">주 1회</div>
+        <div class="stat-note">한국 시간 기준 조율</div>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <div class="table-caption">김주연 4월 액션 아이템</div>
+      <table class="data-table">
+        <thead>
+          <tr><th>기한</th><th>내용</th><th>비고</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cell-amber">4/15</td><td>학원 AI MVP 로드맵 확정 + 제연 분업</td><td>출발 전 완료</td></tr>
+          <tr><td class="cell-amber">4/15</td><td>선화 시연 소스 + 재영 데모 환경 + 동주 테스트 계정</td><td>출발 전 완료</td></tr>
+          <tr><td>4/16~30</td><td>이탈리아에서 원격 개발 (학원 AI 핵심 엔진)</td><td>시차 고려 커뮤니케이션</td></tr>
+          <tr><td>4/16~30</td><td>인사이트 실시간 반영 검토</td><td>현장 반응 → 제품 방향 즉시 피드백</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 14: 유선화 CMO — 역할 ==================== -->
+<div class="slide" data-section="S4" data-sectionName="유선화(CMO) 역할">
+  <div class="slide-header">
+    <span class="section-tag">임원별 미션</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <div class="person-card">
+      <div class="person-name">유선화</div>
+      <div class="person-role">CMO — 마케팅 & 시장 반응 테스트</div>
+      <div class="person-desc">학원 AI 솔루션 인스타그램 마케팅 콘텐츠 기획·제작·광고 집행. 고객 반응 데이터 수집 및 분석.</div>
+    </div>
+    <div class="callout-accent" style="margin-top:8px;">
+      <strong>4월 핵심 미션:</strong> 4월 20일까지 인스타 계정 개설 + 2개 콘텐츠 제작 및 광고 배포
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 15: 유선화 — 콘텐츠 1안 상세 ==================== -->
+<div class="slide" data-section="S4" data-sectionName="콘텐츠 1안 상세">
+  <div class="slide-header">
+    <span class="section-tag">유선화 CMO</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>콘텐츠 1안 — 시장 조사형</h2>
+    <p style="font-size:17px;color:var(--cyan);font-weight:600;">"AI가 시험지를 만들어준다? 선생님, 직접 체험해보세요"</p>
+    <div class="split-grid">
+      <div class="split-col">
+        <div class="bullet-block">
+          <div class="bullet-block-label">콘텐츠 구성</div>
+          <ul class="bullet-list">
+            <li>시연 영상 기반 (주연 출발 전 소스 활용)</li>
+            <li>AI 문제 출제 과정 하이라이트</li>
+            <li>지문 업로드 → AI 분석 → 시험지 생성</li>
+            <li><strong>"무료 체험 신청하기"</strong> CTA</li>
+          </ul>
+        </div>
+        <div class="bullet-block">
+          <div class="bullet-block-label">광고 타겟팅</div>
+          <ul class="bullet-list">
+            <li>지역: 서울 전역 (구별 성과 비교)</li>
+            <li>관심사: 학원, 교육, 입시, 내신</li>
+            <li>연령: 30~55세</li>
+            <li>예산: 일 2~3만원 x 10일</li>
+          </ul>
+        </div>
+      </div>
+      <div class="split-col">
+        <div class="bullet-block">
+          <div class="bullet-block-label">수집 정보 (신청 폼)</div>
+          <ul class="bullet-list">
+            <li>학원명</li>
+            <li>학원 위치 (구/동)</li>
+            <li>학원 규모 (학생 수)</li>
+            <li>주요 과목</li>
+            <li>원장/선생님 연락처</li>
+            <li>희망 미팅 일정</li>
+            <li>현재 시험지 제작 방식</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 16: 유선화 — 콘텐츠 2안 상세 ==================== -->
+<div class="slide" data-section="S4" data-sectionName="콘텐츠 2안 상세">
+  <div class="slide-header">
+    <span class="section-tag">유선화 CMO</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>콘텐츠 2안 — 사전예약형</h2>
+    <p style="font-size:17px;color:var(--amber);font-weight:600;">"우리 구에 딱 3자리. AI 학원 솔루션 독점 이용권 사전 예약 모집 중"</p>
+    <div class="split-grid">
+      <div class="split-col">
+        <div class="bullet-block">
+          <div class="bullet-block-label">5개 기능 쇼케이스</div>
+          <ul class="bullet-list">
+            <li><strong>학원 ERP</strong> — 학생 관리, 출결, 상담 기록</li>
+            <li><strong>AI 내신 지문 분석</strong> — 교과서 지문 → AI 핵심 포인트 추출</li>
+            <li><strong>AI 시험 문제 생성</strong> — 난이도별 자동 출제</li>
+            <li><strong>AI 시험지 자동 조판</strong> — 문제 선택 → PDF 즉시 생성</li>
+            <li><strong>학습 데이터 리포트</strong> — 학생별 취약 단원 분석</li>
+          </ul>
+        </div>
+      </div>
+      <div class="split-col">
+        <div class="bullet-block">
+          <div class="bullet-block-label">콘텐츠 구성</div>
+          <ul class="bullet-list">
+            <li>상세 기능 소개 영상</li>
+            <li>월 50만원 독점 이용권 가격 명시</li>
+            <li>"구별 3곳 한정" FOMO 프레이밍</li>
+            <li><strong>"사전 예약하기"</strong> CTA → 예약 폼/DM</li>
+          </ul>
+        </div>
+        <div class="stat-grid stat-grid-1">
+          <div class="stat-card" style="border-top:3px solid var(--mint);">
+            <div class="stat-label">성공 지표</div>
+            <div class="stat-note" style="font-size:13px;">
+              사전 예약 3건+ → 50만원 가격 검증 완료<br>
+              문의 10건+ → 관심 있으나 가격 조정 검토<br>
+              무반응 → 콘텐츠 리웍 or 가격 재설정
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 17: 유선화 — 액션 아이템 ==================== -->
+<div class="slide" data-section="S4" data-sectionName="유선화 액션 아이템">
+  <div class="slide-header">
+    <span class="section-tag">유선화 CMO</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>유선화 — 4월 액션 아이템</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>기한</th><th>내용</th><th>비고</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cell-amber">4/15</td><td>유재영과 콘텐츠 방향 논의 완료</td><td>영업 톤 + 마케팅 톤 정렬</td></tr>
+          <tr><td class="cell-amber">4/17</td><td>인스타그램 계정 개설 (학원 AI 전용)</td><td>계정명·프로필·하이라이트 구성</td></tr>
+          <tr><td>4/18</td><td>콘텐츠 1안(시장조사형) 시연 영상 편집</td><td>주연 소스 활용</td></tr>
+          <tr><td>4/19</td><td>콘텐츠 2안(사전예약형) 기능 영상 편집</td><td></td></tr>
+          <tr class="row-highlight"><td>4/20</td><td>2개 콘텐츠 업로드 + 광고 집행 시작</td><td>일 예산 2~3만원, 구별 타겟팅</td></tr>
+          <tr><td>4/20~30</td><td>광고 성과 데일리 트래킹</td><td>노출/클릭/신청/예약 기록</td></tr>
+          <tr><td>4/25</td><td>1차 중간 리포트 (주연 공유)</td><td>구별 반응, 1안 vs 2안 비교</td></tr>
+          <tr><td class="cell-amber">4/30</td><td>최종 리포트 — 1안 vs 2안 성과 비교</td><td>5월 과금 모델 판단 핵심 데이터</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 18: 유재영 CEO — 역할 ==================== -->
+<div class="slide" data-section="S5" data-sectionName="유재영(CEO) 역할">
+  <div class="slide-header">
+    <span class="section-tag">임원별 미션</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <div class="person-card">
+      <div class="person-name">유재영</div>
+      <div class="person-role">CEO — 영업 & 현장 인사이트 수집</div>
+      <div class="person-desc">학원 AI 솔루션 직접 영업. 대흥 지역 학원 10곳 미팅을 통한 시장 검증. 가설 기반 체계적 테스트.</div>
+    </div>
+    <div class="callout-accent">
+      <strong>왜 대흥인가:</strong> 최대한 빠르게 인접한 곳에서 다양한 미팅을 진행. 이동 시간 최소화, 하루 2~3곳 방문 가능한 밀집도. 다양한 규모·과목의 학원 반응 확인.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 19: 유재영 — 테스트 변수 매트릭스 ==================== -->
+<div class="slide" data-section="S5" data-sectionName="테스트 변수 매트릭스">
+  <div class="slide-header">
+    <span class="section-tag">유재영 CEO</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>테스트 변수 매트릭스</h2>
+    <div class="table-wrap">
+      <div class="table-caption">가격 제시 타이밍 x 소개 순서 x 제안 프레이밍</div>
+      <table class="data-table">
+        <thead>
+          <tr><th>변수</th><th>케이스 A</th><th>케이스 B</th><th>케이스 C</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cell-amber">가격 제시 타이밍</td>
+            <td>초반에 "월 50만원" 먼저 제시</td>
+            <td>기능 전부 보여준 후 마지막에</td>
+            <td>가격 언급 안 함, 관심도만 확인</td>
+          </tr>
+          <tr>
+            <td class="cell-amber">소개 순서</td>
+            <td>ERP → AI 문제출제 → 리포트</td>
+            <td>AI 문제출제(핵심) → ERP → 리포트</td>
+            <td>학원 고민 먼저 청취 → 맞춤 기능 소개</td>
+          </tr>
+          <tr>
+            <td class="cell-amber">제안 프레이밍</td>
+            <td>"구별 독점 3자리" FOMO</td>
+            <td>"무료 체험 1개월" 저위험</td>
+            <td>"다른 학원도 도입 검토 중" 사회적 증거</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 20: 유재영 — 기능별 반응 기록 ==================== -->
+<div class="slide" data-section="S5" data-sectionName="기능별 반응 기록">
+  <div class="slide-header">
+    <span class="section-tag">유재영 CEO</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>기능별 반응 기록 — 핵심 항목</h2>
+    <p>각 미팅마다 아래 항목을 반드시 기록한다.</p>
+    <div class="split-grid">
+      <div class="split-col">
+        <div class="bullet-block">
+          <div class="bullet-block-label">기능별 반응 (1~5점 + 멘트)</div>
+          <ul class="bullet-list">
+            <li><strong>학원 ERP</strong> — 학생관리/출결/상담</li>
+            <li><strong>AI 내신 지문 분석</strong> — 핵심 포인트 추출</li>
+            <li><strong>AI 시험 문제 생성</strong> — 난이도별 자동 출제</li>
+            <li><strong>AI 시험지 자동 조판</strong> — PDF 즉시 생성</li>
+            <li><strong>학습 데이터 리포트</strong> — 취약 단원 분석</li>
+          </ul>
+        </div>
+      </div>
+      <div class="split-col">
+        <div class="bullet-block">
+          <div class="bullet-block-label">가격 & 모델 반응</div>
+          <ul class="bullet-list">
+            <li>제시 타이밍 (초반/중반/후반/미제시)</li>
+            <li>첫 반응 (표정 + 첫 마디 정확히 기록)</li>
+            <li>"이 정도면 쓸 수 있다" 가격대</li>
+            <li>구매 의향 (1~5점)</li>
+            <li>독점 vs 크레딧 선호도 + 이유</li>
+          </ul>
+        </div>
+        <div class="bullet-block">
+          <div class="bullet-block-label">핵심 인사이트</div>
+          <ul class="bullet-list">
+            <li>가장 필요한 기능 TOP 2</li>
+            <li>전혀 관심 없는 기능</li>
+            <li>예상 못 한 니즈/요청</li>
+            <li>경쟁 제품 사용 여부 + 불만</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 21: 유재영 — 노션 구조 & 액션 ==================== -->
+<div class="slide" data-section="S5" data-sectionName="유재영 액션 아이템">
+  <div class="slide-header">
+    <span class="section-tag">유재영 CEO</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>유재영 — 4월 액션 아이템</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>기한</th><th>내용</th><th>비고</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cell-amber">4/15</td><td>주연과 영업 데모 환경 최종 점검</td><td>태블릿/노트북 시연 확인</td></tr>
+          <tr><td class="cell-amber">4/15</td><td>선화와 콘텐츠 방향 논의</td><td>영업 톤 + 마케팅 톤 정렬</td></tr>
+          <tr><td>4/20</td><td>대흥 학원 3곳 미팅 완료</td><td>테스트 조합 A 적용</td></tr>
+          <tr><td>4/20</td><td>미팅 인사이트 노션 기록 (3곳)</td><td>템플릿 기준 상세 기록</td></tr>
+          <tr><td>4/25</td><td>6곳 누적 미팅 + 1차 인사이트 공유</td><td>패턴 분석: 기능 반응, 가격 반응</td></tr>
+          <tr class="row-highlight"><td>4/30</td><td>10곳 전체 미팅 + 최종 인사이트 보고서</td><td>독점 vs 크레딧 1차 판단 근거</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notion-tree" style="margin-top:8px;">
+      <span class="folder">학원 AI — 영업 인사이트</span><br>
+      &nbsp;&nbsp;<span class="page">대시보드</span> (미팅 현황, 기능별 반응 차트, 가격 반응 분포)<br>
+      &nbsp;&nbsp;<span class="folder">미팅 기록</span> (#01~#10 학원별)<br>
+      &nbsp;&nbsp;<span class="page">테스트 결과 분석</span> (타이밍별, 순서별, 프레이밍별 비교)<br>
+      &nbsp;&nbsp;<span class="page">핵심 발견사항</span> (반응 TOP 3, 가격 저항선, 예상 못 한 니즈)<br>
+      &nbsp;&nbsp;<span class="page">1차 판단 근거</span> (독점/크레딧 근거 + 추천안)
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 22: 이동주 — 역할 ==================== -->
+<div class="slide" data-section="S6" data-sectionName="이동주(재무) 역할">
+  <div class="slide-header">
+    <span class="section-tag">임원별 미션</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <div class="person-card">
+      <div class="person-name">이동주</div>
+      <div class="person-role">재무/운영 — QA & 인사이트 기반 개선</div>
+      <div class="person-desc">UI/UX QA 총괄. 유선화·유재영이 수집한 인사이트를 제품 개선 방향으로 정리. 문제 퀄리티 검수.</div>
+    </div>
+    <div class="callout-accent">
+      <strong>4월 핵심 미션:</strong> 학원 AI 솔루션의 UI/UX QA + 문제 퀄리티 검수 + 인사이트 기반 개선안 정리
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 23: 이동주 — QA 영역 ==================== -->
+<div class="slide" data-section="S6" data-sectionName="QA 검수 항목">
+  <div class="slide-header">
+    <span class="section-tag">이동주 재무/운영</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>QA 영역 상세</h2>
+    <div class="split-grid">
+      <div class="split-col">
+        <div class="bullet-block">
+          <div class="bullet-block-label">UI/UX QA — 7개 항목</div>
+          <ul class="bullet-list">
+            <li>첫 화면 진입 시 <strong>직관성</strong></li>
+            <li>지문 업로드 → 문제 생성 <strong>클릭 수 최소화</strong></li>
+            <li>에러 메시지 <strong>이해 가능 여부</strong></li>
+            <li>모바일/태블릿 <strong>정상 작동</strong></li>
+            <li>로딩 시간 <strong>체감 속도</strong></li>
+            <li>결과물 <strong>다운로드/인쇄</strong> 원활성</li>
+            <li>IT 비전문가 관점 <strong>용어 이해도</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="split-col">
+        <div class="bullet-block">
+          <div class="bullet-block-label">문제 퀄리티 검수 — 7개 항목</div>
+          <ul class="bullet-list">
+            <li>문제의 <strong>정확성</strong> (오답 없는지)</li>
+            <li><strong>난이도 구분</strong> 적절성</li>
+            <li>지문과 문제의 <strong>연관성</strong></li>
+            <li>선택지 구성 <strong>적절성</strong></li>
+            <li>서술형 문제 <strong>채점 기준 명확성</strong></li>
+            <li><strong>교과 과정</strong> 범위 내 여부</li>
+            <li>실제 <strong>내신 출제 패턴</strong> 유사도</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 24: 이동주 — 인사이트 기반 QA ==================== -->
+<div class="slide" data-section="S6" data-sectionName="이동주 액션 아이템">
+  <div class="slide-header">
+    <span class="section-tag">이동주 재무/운영</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>인사이트 기반 QA & 액션 아이템</h2>
+    <div class="comparison-grid comparison-2" style="margin-bottom:12px;">
+      <div class="comparison-item comparison-pro">
+        <div class="comparison-title">재영 미팅 → QA 변환</div>
+        <ul>
+          <li>"시험지 양식이 우리 학원이랑 달라서 못 쓴다"</li>
+          <li>→ QA: 시험지 양식 커스터마이징 가능 여부</li>
+          <li>→ 개선안: 학원별 양식 템플릿 추가 검토</li>
+        </ul>
+      </div>
+      <div class="comparison-item comparison-pro">
+        <div class="comparison-title">선화 광고 → 개선 방향</div>
+        <ul>
+          <li>"수학도 되나요?" 질문 3건</li>
+          <li>→ 개선안: 수학 과목 지원 우선순위 상향</li>
+          <li>실시간 QA 리스트 업데이트</li>
+        </ul>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <div class="table-caption">이동주 4월 액션 아이템</div>
+      <table class="data-table">
+        <thead>
+          <tr><th>기한</th><th>내용</th><th>비고</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cell-amber">4/16</td><td>전체 플로우 1차 QA</td><td>첫 사용자 관점 전부 기록</td></tr>
+          <tr><td>4/18</td><td>UI/UX QA 1차 리포트 → 주연 전달</td><td>스크린샷 + 개선 제안</td></tr>
+          <tr><td>4/20</td><td>문제 퀄리티 1차 검수 (영어 30문제)</td><td>정확성/난이도/형식</td></tr>
+          <tr><td>4/22~30</td><td>재영·선화 인사이트 → QA 업데이트</td><td>실시간 반영</td></tr>
+          <tr><td>4/25</td><td>중간 QA 리포트 (종합)</td><td>주연 이탈리아에서 확인</td></tr>
+          <tr class="row-highlight"><td>4/30</td><td>최종 QA + 우선순위 개선안</td><td>5월 출시 전 필수 수정 확정</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 25: 김제연 — 개발 분업 ==================== -->
+<div class="slide" data-section="S7" data-sectionName="김제연 개발 분업">
+  <div class="slide-header">
+    <span class="section-tag">개발 분업</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>김제연 — 개발 분업 구조</h2>
+    <p>김주연(CTO) 이탈리아 체류 중에도 개발이 멈추지 않도록, 4/15까지 분업 라인 확정.</p>
+    <div class="comparison-grid comparison-2">
+      <div class="comparison-item" style="border-top:3px solid var(--amber);">
+        <div class="comparison-title" style="color:var(--amber);">김주연 담당</div>
+        <ul>
+          <li><strong>핵심 AI 엔진</strong></li>
+          <li>지문 분석 알고리즘</li>
+          <li>문제 생성 알고리즘</li>
+          <li>AI 모델 튜닝</li>
+        </ul>
+      </div>
+      <div class="comparison-item" style="border-top:3px solid var(--cyan);">
+        <div class="comparison-title" style="color:var(--cyan);">김제연 담당</div>
+        <ul>
+          <li><strong>프론트엔드 UI</strong></li>
+          <li>백엔드 API</li>
+          <li>DB 설계</li>
+          <li>배포 인프라</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout-warn" style="margin-top:12px;">
+      <strong>절대 원칙:</strong> 외주개발이 들어와도 학원 AI 일정이 밀리면 절대 안 됨. 학원 AI가 항상 최우선.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 26: 4월 전체 타임라인 1 ==================== -->
+<div class="slide" data-section="S8" data-sectionName="4월 타임라인 (전반)">
+  <div class="slide-header">
+    <span class="section-tag">4월 타임라인</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>4월 전체 타임라인 — 전반</h2>
+    <div class="h-timeline">
+      <div class="h-timeline-row h-timeline-highlight">
+        <div class="h-timeline-date">4/13 (월)</div>
+        <div class="h-timeline-content">
+          <strong>오늘. 임원진 회의. 미션 확정.</strong>
+        </div>
+      </div>
+      <div class="h-timeline-row">
+        <div class="h-timeline-date">4/14 (화)</div>
+        <div class="h-timeline-content">
+          전사 전략회의 (포토부스 기획 회의 포함)
+        </div>
+      </div>
+      <div class="h-timeline-row h-timeline-highlight">
+        <div class="h-timeline-date">4/15 (수)</div>
+        <div class="h-timeline-content">
+          <strong>주연 출발 전 최종 세팅</strong>
+          <span class="sub">제연 분업 확정 / 선화 시연 소스 / 재영 데모 환경 / 동주 테스트 계정</span>
+        </div>
+      </div>
+      <div class="h-timeline-row">
+        <div class="h-timeline-date">4/16 (목)</div>
+        <div class="h-timeline-content">
+          <strong style="color:var(--cyan);">주연 이탈리아 출발</strong>
+          <span class="sub">동주 QA 시작 / 재영 학원 컨택 시작</span>
+        </div>
+      </div>
+      <div class="h-timeline-row">
+        <div class="h-timeline-date">4/17~19</div>
+        <div class="h-timeline-content">
+          선화 콘텐츠 제작 / 재영 학원 미팅 시작 (1~3번, 테스트 A)
+        </div>
+      </div>
+      <div class="h-timeline-row h-timeline-highlight">
+        <div class="h-timeline-date">4/20 (일)</div>
+        <div class="h-timeline-content">
+          <strong>선화 콘텐츠 2개 업로드 + 광고 시작</strong>
+          <span class="sub">재영 3곳 미팅 완료 + 인사이트 기록 / 동주 1차 QA 완료</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 27: 4월 전체 타임라인 2 ==================== -->
+<div class="slide" data-section="S8" data-sectionName="4월 타임라인 (후반)">
+  <div class="slide-header">
+    <span class="section-tag">4월 타임라인</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>4월 전체 타임라인 — 후반</h2>
+    <div class="h-timeline">
+      <div class="h-timeline-row">
+        <div class="h-timeline-date">4/21~24</div>
+        <div class="h-timeline-content">
+          재영 학원 미팅 (4~6번, 테스트 B) / 선화 광고 성과 트래킹 / 동주 인사이트 기반 QA 업데이트
+        </div>
+      </div>
+      <div class="h-timeline-row h-timeline-highlight">
+        <div class="h-timeline-date">4/25</div>
+        <div class="h-timeline-content">
+          <strong>중간 점검</strong>
+          <span class="sub">재영: 6곳 인사이트 1차 정리 / 선화: 광고 중간 리포트 / 동주: 중간 QA 리포트</span>
+        </div>
+      </div>
+      <div class="h-timeline-row">
+        <div class="h-timeline-date">4/26~29</div>
+        <div class="h-timeline-content">
+          재영 학원 미팅 (7~10번) / 선화 광고 최적화 / 동주 최종 QA
+        </div>
+      </div>
+      <div class="h-timeline-row h-timeline-highlight">
+        <div class="h-timeline-date">4/30</div>
+        <div class="h-timeline-content">
+          <strong style="color:var(--amber);font-size:15px;">4월 마감</strong>
+          <span class="sub">재영: 10곳 최종 인사이트 보고서<br>선화: 1안 vs 2안 최종 비교 분석<br>동주: 최종 QA + 개선안 목록<br>주연: 수집된 데이터 기반 5월 방향 판단</span>
+        </div>
+      </div>
+    </div>
+    <div class="callout-accent" style="margin-top:12px;">
+      <strong>4월 30일이 데드라인.</strong> 모든 데이터가 이 날 모인다. 5월 초에 과금 모델과 출시 전략을 확정한다.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 28: 결정 사항 요약 ==================== -->
+<div class="slide" data-section="S9" data-sectionName="결정 사항 요약">
+  <div class="slide-header">
+    <span class="section-tag">결정 사항</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body">
+    <h2>결정 사항 요약 — 7개</h2>
+    <div class="decision-list">
+      <div class="decision-item">
+        <div class="decision-num">1</div>
+        <div>
+          <div class="decision-title">전사 3대 우선순위 확정</div>
+          <div class="decision-body">악센트 매출 사수+온라인 활성화 → 포토부스 B2B 영업 → 학원 AI 시장 검증+개발</div>
+        </div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-num">2</div>
+        <div>
+          <div class="decision-title">학원 AI 과금 모델</div>
+          <div class="decision-body">4월 시장 조사 후 데이터 기반 판단. 독점 50만원 vs 크레딧 vs 하이브리드 중 5월 초 확정.</div>
+        </div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-num">3</div>
+        <div>
+          <div class="decision-title">김주연(CTO)</div>
+          <div class="decision-body">4/16 이탈리아 출발, 원격 개발 + 커맨드센터 역할 유지. 출발 전 모든 세팅 완료.</div>
+        </div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-num">4</div>
+        <div>
+          <div class="decision-title">유선화(CMO)</div>
+          <div class="decision-body">4/20까지 인스타 계정 + 2개 콘텐츠(시장조사형/사전예약형) + 광고 집행.</div>
+        </div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-num">5</div>
+        <div>
+          <div class="decision-title">유재영(CEO)</div>
+          <div class="decision-body">4월 중 대흥 학원 10곳 직접 미팅. 가설 기반 체계적 테스트. 노션에 상세 기록.</div>
+        </div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-num">6</div>
+        <div>
+          <div class="decision-title">이동주(재무)</div>
+          <div class="decision-body">UI/UX QA + 문제 퀄리티 검수 + 인사이트→개선안 정리. 노션으로 주연에게 전달.</div>
+        </div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-num">7</div>
+        <div>
+          <div class="decision-title">김제연(개발)</div>
+          <div class="decision-body">주연과 분업 구조로 학원 AI 개발 지속. 외주보다 학원 AI 절대 우선.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 29: 한 줄 결론 ==================== -->
+<div class="slide layout-quote" data-section="S9" data-sectionName="한 줄 결론">
+  <div class="slide-header">
+    <span class="section-tag">결론</span>
+    <span class="slide-counter"></span>
+  </div>
+  <div class="slide-body" style="justify-content:center;">
+    <div class="big-conclusion">
+      <div class="conclusion-text">
+        4월은 전장의 안개를 걷는 달.<br>
+        데이터로 무장하고 5월에 전투 개시.
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:18px;">
+      <p style="font-size:14px;color:var(--text-soft);">감이 아니라 숫자로 판단한다. 영업 10곳, 광고 2개, QA 전수검사.<br>4월 30일, 모든 데이터가 하나로 모인다.</p>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span>네안데르 임원진 회의</span>
+    <span>2026.04.13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 30: 끝 ==================== -->
+<div class="slide layout-end" data-section="S9" data-sectionName="끝">
+  <div class="slide-body" style="justify-content:center;align-items:center;">
+    <div class="end-block">
+      <div class="end-mark">END</div>
+      <div class="end-deck">네안데르 4월 13일 임원진 회의</div>
+      <div class="end-date">2026.04.13</div>
+      <div style="margin-top:24px;">
+        <p style="font-size:13px;color:var(--text-mute);">다음 일정: 4/14 전사 전략회의 · 4/15 세팅 데이 · 4/25 중간 점검 · 4/30 마감</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- .deck -->
+
+<!-- Navigation -->
+<div class="nav-controls">
+  <button class="nav-btn" id="btn-prev">&#8592;</button>
+  <div class="nav-display">
+    <span id="current-slide">001</span> / <span id="total-slides">000</span>
+  </div>
+  <button class="nav-btn" id="btn-next">&#8594;</button>
+</div>
+
+<div class="help-hint">
+  <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> 이동 &nbsp; <kbd>Esc</kbd> 목차 &nbsp; <kbd>Home</kbd> <kbd>End</kbd> 처음/끝
+</div>
+
+<script>
+(function(){
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+
+  const totalEl = document.getElementById('total-slides');
+  const currentEl = document.getElementById('current-slide');
+  const progressEl = document.getElementById('progress-fill');
+  const sidebar = document.getElementById('sidebar');
+
+  totalEl.textContent = String(total).padStart(3, '0');
+
+  function show(i) {
+    if (i < 0) i = 0;
+    if (i >= total) i = total - 1;
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+    current = i;
+    currentEl.textContent = String(i + 1).padStart(3, '0');
+    progressEl.style.width = ((i + 1) / total * 100) + '%';
+    history.replaceState(null, '', '#slide-' + (i + 1));
+    document.querySelectorAll('.sidebar-item').forEach(item => {
+      item.classList.toggle('active', parseInt(item.dataset.slide) === i + 1);
+    });
+    const activeItem = sidebar.querySelector('.sidebar-item.active');
+    if (activeItem) {
+      activeItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+    const body = slides[i].querySelector('.slide-body');
+    if (body) body.scrollTop = 0;
+  }
+
+  function prev() { show(current - 1); }
+  function next() { show(current + 1); }
+
+  document.getElementById('btn-prev').addEventListener('click', prev);
+  document.getElementById('btn-next').addEventListener('click', next);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    switch (e.key) {
+      case 'ArrowRight':
+      case 'PageDown':
+      case ' ':
+        e.preventDefault(); next(); break;
+      case 'ArrowLeft':
+      case 'PageUp':
+        e.preventDefault(); prev(); break;
+      case 'Home':
+        e.preventDefault(); show(0); break;
+      case 'End':
+        e.preventDefault(); show(total - 1); break;
+      case 'Escape':
+        e.preventDefault(); toggleSidebar(); break;
+    }
+  });
+
+  // Build sidebar
+  const simpleGroups = {};
+  const simpleOrder = [];
+  slides.forEach((s, idx) => {
+    const sec = s.dataset.section || 'X';
+    if (!simpleGroups[sec]) {
+      simpleGroups[sec] = [];
+      simpleOrder.push(sec);
+    }
+    simpleGroups[sec].push({
+      num: idx + 1,
+      name: s.dataset.sectionName || ''
+    });
+  });
+
+  const sectionLabels = {
+    'S0': '0 · 커버 & 배경',
+    'S1': '1 · 전사 3대 우선순위',
+    'S2': '2 · 학원 AI 시장 검증',
+    'S3': '3 · 김주연 CTO 미션',
+    'S4': '4 · 유선화 CMO 미션',
+    'S5': '5 · 유재영 CEO 미션',
+    'S6': '6 · 이동주 재무 미션',
+    'S7': '7 · 김제연 개발 분업',
+    'S8': '8 · 4월 타임라인',
+    'S9': '9 · 결정 사항 & 결론'
+  };
+
+  simpleOrder.forEach(secKey => {
+    const heading = document.createElement('div');
+    heading.className = 'sidebar-heading';
+    heading.textContent = sectionLabels[secKey] || secKey;
+    sidebar.appendChild(heading);
+    simpleGroups[secKey].forEach(item => {
+      const a = document.createElement('a');
+      a.className = 'sidebar-item';
+      a.dataset.slide = item.num;
+      a.textContent = String(item.num).padStart(3, '0') + ' · ' + (item.name || '').slice(0, 32);
+      a.addEventListener('click', () => {
+        show(item.num - 1);
+        sidebar.classList.remove('open');
+      });
+      sidebar.appendChild(a);
+    });
+  });
+
+  document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+  function toggleSidebar() {
+    sidebar.classList.toggle('open');
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!sidebar.contains(e.target) && !e.target.closest('#sidebar-toggle')) {
+      sidebar.classList.remove('open');
+    }
+  });
+
+  // Deep link
+  const hash = location.hash.match(/slide-(\d+)/);
+  if (hash) show(parseInt(hash[1]) - 1);
+  else show(0);
+
+  // Swipe support
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) > 60) {
+      if (dx < 0) next(); else prev();
+    }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
