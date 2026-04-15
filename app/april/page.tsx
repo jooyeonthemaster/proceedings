@@ -29,6 +29,15 @@ export default function AprilPage() {
       description: '🎯 2026 전략 분석 + 학원 AI vs 포토부스 우선순위 + 4개 시나리오 비교 + 8월 악센트 재계약 판단 프레임',
       path: '/april/week2',
       color: 'from-indigo-600 to-violet-700',
+      status: 'past'
+    },
+    {
+      week: 3,
+      date: '2026년 4월 15일',
+      title: '4월 3주차 임원진 회의록',
+      description: '🔥 D-1 이탈리아 출발 전 긴급 업데이트 · 통합 랜딩페이지 · 4월 5대 확정물 · 엔드리스 QA',
+      path: '/april/week3',
+      color: 'from-rose-600 to-amber-700',
       status: 'current'
     }
   ];
