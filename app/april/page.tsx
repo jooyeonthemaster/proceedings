@@ -39,6 +39,24 @@ export default function AprilPage() {
       path: '/april/week3',
       color: 'from-rose-600 to-amber-700',
       status: 'current'
+    },
+    {
+      week: 3,
+      date: '2026년 4월 16일',
+      title: '시장 인사이트 · 팀 액션 브리프',
+      description: '🧠 카톡 7,560줄 분석 · 경쟁사 10종 지형 · 영업 FAQ · 25개 검증 포인트 · 4-Phase 로드맵',
+      path: '/april/week3/insights',
+      color: 'from-indigo-600 to-fuchsia-700',
+      status: 'past'
+    },
+    {
+      week: 4,
+      date: '2026년 4월 20일',
+      title: '4월 4주차 임원진 회의록',
+      description: '✅ 4/15 진행상황 점검 · 이미지/PDF 추출 80% 데모 · 언론재단 1차 선정(3,000만) · 김기홍 강의 1,200만 확정',
+      path: '/april/week4',
+      color: 'from-violet-600 to-fuchsia-700',
+      status: 'current'
     }
   ];
 
@@ -76,7 +94,7 @@ export default function AprilPage() {
         </div>
 
         {/* Week Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
           {weeks.map((week, index) => (
             <Link
               key={index}
